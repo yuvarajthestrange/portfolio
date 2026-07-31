@@ -159,7 +159,10 @@ if (counters.length > 0) {
         });
     }, { threshold: 0.5 });
 
-    observer.observe(document.querySelector('.counter-card').parentElement);
+    const counterCard = document.querySelector('.counter-card');
+    if (counterCard && counterCard.parentElement) {
+        observer.observe(counterCard.parentElement);
+    }
 }
 
 // Toggle Nav Bar Background on Scroll

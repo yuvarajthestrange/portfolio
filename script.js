@@ -9,23 +9,28 @@ if (follower) {
 // Navigation Link Highlighting on Scroll
 const sections = document.querySelectorAll('section[id]');
 window.addEventListener('scroll', () => {
-    let scrollY = window.pageYOffset;
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 150;
-        const sectionId = current.getAttribute('id');
-        const link = document.querySelector(`.nav-link[href*=${sectionId}]`);
-
-        if (link) {
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                link.classList.add('text-red');
-                link.classList.remove('text-white/80');
-            } else {
-                link.classList.remove('text-red');
-                link.classList.add('text-white/80');
+    try {
+        let scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            const sectionTop = current.offsetTop - 150;
+            const sectionId = current.getAttribute('id');
+            if (sectionId) {
+                const link = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+                if (link) {
+                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                        link.classList.add('text-red');
+                        link.classList.remove('text-white/80');
+                    } else {
+                        link.classList.remove('text-red');
+                        link.classList.add('text-white/80');
+                    }
+                }
             }
-        }
-    });
+        });
+    } catch (e) {
+        console.error("Highlight scroll error caught:", e);
+    }
 });
 
 // Interactive Console Module Selection

@@ -137,15 +137,18 @@ if (counters.length > 0) {
             const cleanTarget = parseInt(target.replace('+', ''), 10);
             let count = 0;
             const duration = 1500;
-            const stepTime = Math.abs(Math.floor(duration / cleanTarget));
+            const totalSteps = 50;
+            const increment = Math.ceil(cleanTarget / totalSteps);
+            const stepTime = duration / totalSteps;
             
             const timer = setInterval(() => {
-                count++;
-                counter.textContent = count + (isPlus && count >= cleanTarget ? '+' : '');
+                count += increment;
                 if (count >= cleanTarget) {
+                    count = cleanTarget;
                     clearInterval(timer);
                 }
-            }, stepTime || 20);
+                counter.textContent = count + (isPlus ? '+' : '');
+            }, stepTime);
         });
     };
 
@@ -157,7 +160,7 @@ if (counters.length > 0) {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
 
     const counterCard = document.querySelector('.counter-card');
     if (counterCard && counterCard.parentElement) {
@@ -169,7 +172,8 @@ if (counters.length > 0) {
 const navShell = document.querySelector('.nav-shell');
 if (navShell) {
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        if (scrollTop > 20) {
             navShell.classList.add('is-scrolled');
         } else {
             navShell.classList.remove('is-scrolled');
@@ -188,8 +192,7 @@ if (revealElements.length > 0) {
             }
         });
     }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.02
     });
 
     revealElements.forEach(el => revealObserver.observe(el));

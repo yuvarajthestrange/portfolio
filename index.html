@@ -106,39 +106,61 @@
 
         <!-- Interactive Console -->
         <section class="interactive-console bg-black px-5 py-16 text-white md:px-10">
-            <div class="mx-auto grid max-w-[1080px] gap-5 lg:grid-cols-[0.75fr_1.25fr]">
-                <div class="console-intro reveal-left">
+            <div class="mx-auto max-w-[1080px]">
+                <div class="console-intro reveal-left mb-10 max-w-2xl">
                     <p class="text-xs font-bold uppercase tracking-[0.35em] text-red mb-3">Live System</p>
-                    <h2 class="split-heading font-bebas text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.82]">Builder Console</h2>
-                    <p class="mt-5 max-w-md text-sm leading-7 text-white/62">Hover the modules to scan the current operating stack: security practice, client delivery, and automation workflows.</p>
+                    <h2 class="split-heading font-bebas text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.82]">Security Operations Stack</h2>
+                    <p class="mt-4 max-w-xl text-sm leading-7 text-white/62">Operational toolchain and methodology across threat detection, forensic investigation, incident response, and security automation.</p>
                 </div>
-                <div class="console-grid reveal-right">
+                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal-right">
                     <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <polyline points="4 17 10 11 4 5"></polyline>
-                            <line x1="12" y1="19" x2="20" y2="19"></line>
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <circle cx="12" cy="11" r="3"></circle>
                         </svg>
-                        <h3>Defensive Ops</h3>
-                        <p>SIEM tools (Splunk, Wazuh), Incident Monitoring, Log Triage</p>
-                        <div class="console-meter"><span style="width:85%"></span></div>
+                        <h3>DETECT</h3>
+                        <p>Wazuh &middot; Splunk &middot; Sysmon &middot; Snort</p>
+                        <div class="console-meter"><span style="width:95%"></span></div>
                     </article>
                     <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                            <polyline points="4 17 10 11 4 5"></polyline>
-                            <line x1="12" y1="19" x2="20" y2="19"></line>
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <path d="m11 8v6"></path>
+                            <path d="m8 11h6"></path>
                         </svg>
-                        <h3>Offensive Security</h3>
-                        <p>Web Pentesting, OWASP Top 10 vulnerabilities, Burp Suite</p>
+                        <h3>INVESTIGATE</h3>
+                        <p>Wireshark &middot; TheHive &middot; VirusTotal &middot; AbuseIPDB</p>
                         <div class="console-meter"><span style="width:90%"></span></div>
                     </article>
                     <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                        </svg>
+                        <h3>RESPOND</h3>
+                        <p>Incident Response &middot; IOC Analysis &middot; Threat Intelligence</p>
+                        <div class="console-meter"><span style="width:88%"></span></div>
+                    </article>
+                    <article class="console-card">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
                             <polyline points="4 17 10 11 4 5"></polyline>
                             <line x1="12" y1="19" x2="20" y2="19"></line>
                         </svg>
-                        <h3>Automation &amp; Coding</h3>
-                        <p>Python script scripting, Flask, Django, threat data scraping</p>
-                        <div class="console-meter"><span style="width:80%"></span></div>
+                        <h3>AUTOMATE</h3>
+                        <p>Python &middot; Flask &middot; REST APIs &middot; Security Automation</p>
+                        <div class="console-meter"><span style="width:85%"></span></div>
+                    </article>
+                    <article class="console-card sm:col-span-2 lg:col-span-2">
+                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="22" y1="12" x2="18" y2="12"></line>
+                            <line x1="6" y1="12" x2="2" y2="12"></line>
+                            <line x1="12" y1="6" x2="12" y2="2"></line>
+                            <line x1="12" y1="22" x2="12" y2="18"></line>
+                        </svg>
+                        <h3>OFFENSIVE KNOWLEDGE</h3>
+                        <p>Burp Suite &middot; Nmap &middot; OWASP &middot; Metasploit</p>
+                        <div class="console-meter"><span style="width:86%"></span></div>
                     </article>
                 </div>
             </div>

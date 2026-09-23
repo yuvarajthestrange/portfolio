@@ -30,6 +30,7 @@
                     <a href="#experience" class="nav-link">Experience</a>
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#playbooks" class="nav-link">Playbooks</a>
                     <a href="#community" class="nav-link">Leadership</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
@@ -709,6 +710,396 @@
                         </div>
 
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOC Investigation Playbooks Section -->
+        <section id="playbooks" class="hyper-section investigation-scenarios py-24 border-b border-white/10 bg-black text-white relative">
+            <div class="absolute inset-0 grid-bg opacity-30 pointer-events-none"></div>
+            <div class="mx-auto max-w-[1240px] px-5 md:px-10 relative z-10">
+                <div class="mb-12 reveal">
+                    <p class="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-red">Incident Playbooks</p>
+                    <h2 class="playbooks-section-title">SOC Investigation Playbooks</h2>
+                    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-white/70 text-justify">Interactive case files and end-to-end incident response pathways mapped from initial telemetry ingestion to MITRE ATT&amp;CK correlation, threat enrichment, and automated containment.</p>
+                </div>
+
+                <!-- Case File Container -->
+                <div class="case-file-container reveal">
+                    <!-- Top Console Bar -->
+                    <div class="case-file-topbar">
+                        <div class="flex items-center gap-2.5">
+                            <div class="flex items-center gap-1.5 mr-2">
+                                <span style="display:inline-block;width:10px;height:10px;border-radius:99px;background:#ff5f56;"></span>
+                                <span style="display:inline-block;width:10px;height:10px;border-radius:99px;background:#ffbd2e;"></span>
+                                <span style="display:inline-block;width:10px;height:10px;border-radius:99px;background:#27c93f;"></span>
+                            </div>
+                            <h3 class="case-file-header-title">SOC PLAYBOOK SCENARIOS // DECLASSIFIED</h3>
+                        </div>
+                        <span class="soc-verified-badge">
+                            <span class="soc-verified-dot"></span>
+                            LIVE CASE MANAGEMENT // TIER-2 SOC
+                        </span>
+                    </div>
+
+                    <!-- Navigation Tabs -->
+                    <div class="case-nav-tabs">
+                        <button class="case-tab-btn active" data-scenario="case-01">
+                            <i class="uil uil-terminal"></i>
+                            <span>[ CASE #01: PowerShell ]</span>
+                        </button>
+                        <button class="case-tab-btn" data-scenario="case-02">
+                            <i class="uil uil-key-skeleton"></i>
+                            <span>[ CASE #02: Auth Anomaly ]</span>
+                        </button>
+                        <button class="case-tab-btn" data-scenario="case-03">
+                            <i class="uil uil-envelope-shield"></i>
+                            <span>[ CASE #03: Phishing ]</span>
+                        </button>
+                    </div>
+
+                    <!-- Scenario 1: Case 01 -->
+                    <div id="case-01" class="case-scenario active">
+                        <div class="case-meta-bar">
+                            <div class="case-meta-info">
+                                <div class="case-meta-threat">
+                                    <span class="case-meta-label">THREAT DETECTED:</span>
+                                    <span class="case-meta-value">Obfuscated PowerShell Execution</span>
+                                </div>
+                                <div class="case-meta-tags">
+                                    <span class="case-tag mitre">MITRE T1059.001</span>
+                                    <span class="case-tag playbook">PLAYBOOK: IR-WIN-PS-04</span>
+                                    <span class="case-tag sev-high">SEVERITY: HIGH</span>
+                                </div>
+                            </div>
+                            <div class="case-status-badge resolved">
+                                <span class="case-status-dot"></span>
+                                STATUS: [ RESOLVED ]
+                            </div>
+                        </div>
+
+                        <ul class="case-timeline">
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 01 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-event">EVENT</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Endpoint executes encoded payload.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 02 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-sysmon">SYSMON TELEMETRY</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Event ID 1 (Process Creation) captures command line.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 03 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-wazuh">WAZUH SIEM</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Ingests logs, parses XML, and applies MITRE ATT&amp;CK mapping.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 04 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-alert">ALERT GENERATED</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Level 12 Severity Triggered.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 05 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-ioc">IOC EXTRACTION</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Automated script pulls Base64 payload and malicious IP.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 06 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-intel">THREAT INTEL</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Query to VirusTotal/AbuseIPDB confirms malicious reputation.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 07 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-triage">ANALYST TRIAGE</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Manual review of process tree and parent/child relationships.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 08 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-thehive">THEHIVE CASE</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Case #105 created, observables added, playbook attached.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge containment">[ 09 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-response">RESPONSE CONTAINMENT</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Host isolated via Wazuh active response.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Scenario 2: Case 02 -->
+                    <div id="case-02" class="case-scenario">
+                        <div class="case-meta-bar">
+                            <div class="case-meta-info">
+                                <div class="case-meta-threat">
+                                    <span class="case-meta-label">THREAT DETECTED:</span>
+                                    <span class="case-meta-value">Authentication Anomaly &amp; LSASS Credential Dumping</span>
+                                </div>
+                                <div class="case-meta-tags">
+                                    <span class="case-tag mitre">MITRE T1110 / T1003</span>
+                                    <span class="case-tag playbook">PLAYBOOK: IR-AUTH-AD-02</span>
+                                    <span class="case-tag sev-critical">SEVERITY: CRITICAL</span>
+                                </div>
+                            </div>
+                            <div class="case-status-badge mitigated">
+                                <span class="case-status-dot"></span>
+                                STATUS: [ MITIGATED ]
+                            </div>
+                        </div>
+
+                        <ul class="case-timeline">
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 01 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-event">EVENT</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Sequential logon failures followed by unexpected privileged account escalation.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 02 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-sysmon">SYSMON TELEMETRY</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Event ID 10 (ProcessAccess) captures LSASS memory injection query (PROCESS_VM_READ).</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 03 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-wazuh">WAZUH SIEM</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Rule 60100 triggers on anomalous login volume; cross-correlates with Sysmon LSASS access.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 04 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-alert">ALERT GENERATED</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Level 13 Critical Severity: Credential Dumping &amp; Lateral Movement Attempt.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 05 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-ioc">IOC EXTRACTION</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Source IP 192.168.1.145 isolated; compromised user account SID and NTLM hashes captured.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 06 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-intel">THREAT INTEL</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Domain controller audit query verifies abnormal Kerberos Ticket Granting Service (TGS) requests.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 07 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-triage">ANALYST TRIAGE</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Session trace confirms Pass-the-Hash pivot attempt across internal workstation subnets.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 08 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-thehive">THEHIVE CASE</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Case #106 created, compromised accounts tagged, credential rotation tasks dispatched.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge containment">[ 09 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-response">RESPONSE CONTAINMENT</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Active Directory account locked, host network session terminated via Wazuh rule enforcement.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Scenario 3: Case 03 -->
+                    <div id="case-03" class="case-scenario">
+                        <div class="case-meta-bar">
+                            <div class="case-meta-info">
+                                <div class="case-meta-threat">
+                                    <span class="case-meta-label">THREAT DETECTED:</span>
+                                    <span class="case-meta-value">Weaponized Macro Attachment &amp; C2 Beaconing</span>
+                                </div>
+                                <div class="case-meta-tags">
+                                    <span class="case-tag mitre">MITRE T1566.001 / T1071</span>
+                                    <span class="case-tag playbook">PLAYBOOK: IR-EML-C2-07</span>
+                                    <span class="case-tag sev-high">SEVERITY: HIGH</span>
+                                </div>
+                            </div>
+                            <div class="case-status-badge contained">
+                                <span class="case-status-dot"></span>
+                                STATUS: [ CONTAINED ]
+                            </div>
+                        </div>
+
+                        <ul class="case-timeline">
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 01 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-event">EVENT</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Employee executes malicious macro embedded in spear-phishing attachment (invoice_q3.xlsm).</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 02 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-snort">SNORT NIDS</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Network sensor flags outbound beacon on port 8443 with signature ET MALWARE Macro Callback.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 03 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-sysmon">SYSMON TELEMETRY</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Event ID 1 captures EXCEL.EXE spawning powershell.exe; Event ID 3 logs outbound TCP handshakes.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 04 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-wazuh">WAZUH SIEM</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Rule 100340 triggers: Office Application Child Process &amp; Malicious External Traffic Correlation.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 05 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-ioc">IOC EXTRACTION</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Automated regex isolates C2 domain cloud-sync-telemetry[.]com and payload SHA-256 hash.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 06 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-intel">THREAT INTEL</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Query to VirusTotal returns 52/72 malicious score; AbuseIPDB registers 100% confidence abuse rating.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 07 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-triage">ANALYST TRIAGE</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Memory dump inspection reveals registry persistence key written (HKCU\RunOnce).</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge">[ 08 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-thehive">THEHIVE CASE</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">Case #107 opened, IOC observables pushed to MISP, company-wide mailbox purge initiated.</span>
+                                </div>
+                            </li>
+                            <li class="timeline-step">
+                                <div class="timeline-marker">
+                                    <span class="timeline-badge containment">[ 09 ]</span>
+                                </div>
+                                <div class="timeline-content">
+                                    <span class="timeline-stage stage-response">RESPONSE CONTAINMENT</span>
+                                    <span class="timeline-sep">—</span>
+                                    <span class="timeline-desc">DNS sinkholing activated, registry persistence wiped, endpoint isolated from network.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </section>

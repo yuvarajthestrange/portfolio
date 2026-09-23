@@ -180,6 +180,30 @@ if (moduleButtons && terminalHeading && terminalScreen) {
     });
 }
 
+// Case Playbook Scenarios Tab Switcher
+const caseTabBtns = document.querySelectorAll('.case-tab-btn');
+const caseScenarios = document.querySelectorAll('.case-scenario');
+
+if (caseTabBtns.length > 0 && caseScenarios.length > 0) {
+    caseTabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all tabs & scenarios
+            caseTabBtns.forEach(b => b.classList.remove('active'));
+            caseScenarios.forEach(s => s.classList.remove('active'));
+
+            // Activate clicked tab
+            btn.classList.add('active');
+
+            // Show corresponding scenario
+            const targetId = btn.dataset.scenario;
+            const targetScenario = document.getElementById(targetId);
+            if (targetScenario) {
+                targetScenario.classList.add('active');
+            }
+        });
+    });
+}
+
 // Contact Form Handler
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {

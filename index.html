@@ -83,11 +83,10 @@
                     <div class="floating-chip chip-right font-mono text-xs"><span></span>Pentest Lab</div>
                     <div class="floating-orbit orbit-one"></div>
                     <div class="floating-orbit orbit-two"></div>
-                    <div class="portrait-card parallax-img relative ml-auto h-[430px] max-w-[340px] overflow-hidden rounded-[26px] border border-white/12 bg-[#050505] shadow-2xl">
-                        <img alt="Yuvaraj C portrait" class="object-cover object-top" style="position:absolute;height:100%;width:100%;left:0;top:0;right:0;bottom:0;color:transparent" src="hacker_portrait.jpg" />
-                        <div class="portrait-fallback" aria-hidden="true"></div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        <div class="absolute bottom-6 left-6 rounded-full border border-white/15 bg-black/45 px-5 py-3 text-xs uppercase tracking-[0.25em] backdrop-blur-md">SOC Operator / Security Builder</div>
+                    <div class="portrait-card parallax-img relative ml-auto overflow-hidden border border-white/12 shadow-2xl">
+                        <img alt="Yuvaraj C portrait" src="/hacker_portrait.jpg" />
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-[2]"></div>
+                        <div class="absolute bottom-6 left-6 rounded-full border border-white/15 bg-black/55 px-5 py-2.5 text-xs uppercase tracking-[0.2em] backdrop-blur-md z-[3] text-white">SOC Operator / Security Builder</div>
                     </div>
                 </div>
             </div>
@@ -410,89 +409,129 @@
                             </div>
 
                             <!-- Visual Flowchart Nodes -->
-                            <div class="space-y-2.5 font-mono text-xs">
+                            <div class="space-y-3 font-sans">
                                 
                                 <!-- Step 1: Endpoint -->
-                                <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <div class="rounded-lg bg-red/10 p-2 text-red">
-                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                <div class="soc-flow-node flex items-center justify-between">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="rounded-xl bg-red/15 border border-red/30 p-2.5 text-red flex items-center justify-center">
+                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                                         </div>
                                         <div>
-                                            <strong class="text-white text-sm block font-sans">WINDOWS ENDPOINT</strong>
-                                            <span class="text-white/50 text-[11px]">Telemetry Source &middot; Process Execution &middot; Network Events</span>
+                                            <div class="flex items-center gap-2">
+                                                <strong class="text-white text-sm font-bold tracking-wide">WINDOWS ENDPOINT</strong>
+                                                <span class="rounded bg-white/10 px-2 py-0.5 text-[10px] font-mono text-white/80">WIN-10/11</span>
+                                            </div>
+                                            <p class="text-white/60 text-xs mt-0.5">Kernel telemetry source &middot; Process execution, network connections &amp; file events</p>
                                         </div>
                                     </div>
-                                    <span class="rounded bg-white/5 px-2 py-1 text-[10px] text-white/70">Sysmon</span>
+                                    <span class="rounded-full border border-red/40 bg-red/10 px-2.5 py-1 text-[10px] font-mono text-red font-bold">Sysmon</span>
                                 </div>
 
-                                <div class="flex justify-center text-red py-0.5">
-                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Kernel Telemetry</span>
-                                </div>
-
-                                <!-- Step 2: Wazuh SIEM -->
-                                <div class="rounded-xl border border-red/40 bg-red/[0.06] p-3.5 text-center hover:bg-red/[0.09] transition-colors relative">
-                                    <div class="inline-flex items-center gap-2 mb-1">
-                                        <span class="h-2 w-2 rounded-full bg-red"></span>
-                                        <strong class="text-white text-base font-sans tracking-wide">WAZUH SIEM</strong>
+                                <!-- Connector: Sysmon to Wazuh -->
+                                <div class="soc-connector">
+                                    <div class="soc-connector-badge">
+                                        <span>&darr;</span> Sysmon Event Forwarding (Event ID 1, 3, 11)
                                     </div>
-                                    <p class="text-white/60 text-[11px] font-sans">Central Log Analysis &middot; Custom Detection Rules &middot; MITRE ATT&amp;CK</p>
                                 </div>
 
-                                <div class="flex justify-center text-red py-0.5">
-                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Detection Engine</span>
+                                <!-- Step 2: Wazuh SIEM (Central Hub) -->
+                                <div class="soc-hub-card text-center">
+                                    <div class="inline-flex items-center gap-2 mb-1.5">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red animate-ping"></span>
+                                        <strong class="text-white text-lg font-bebas tracking-wider uppercase text-red">WAZUH SIEM</strong>
+                                        <span class="rounded bg-red/20 px-2 py-0.5 text-[10px] font-mono text-white font-bold">CENTRAL_HUB</span>
+                                    </div>
+                                    <p class="text-white/85 text-xs font-medium">Real-Time Log Ingestion &amp; Behavioral Decoding Engine</p>
+                                    <div class="mt-2.5 flex flex-wrap items-center justify-center gap-2 text-[10px] font-mono text-white/60">
+                                        <span class="rounded bg-white/5 border border-white/10 px-2 py-0.5">Custom XML Rules</span>
+                                        <span class="rounded bg-white/5 border border-white/10 px-2 py-0.5">MITRE ATT&amp;CK Matrix</span>
+                                        <span class="rounded bg-white/5 border border-white/10 px-2 py-0.5">Correlation Engine</span>
+                                    </div>
+                                </div>
+
+                                <!-- Connector: Wazuh to Triage -->
+                                <div class="soc-connector">
+                                    <div class="soc-connector-badge">
+                                        <span>&darr;</span> Detection Trigger (Alert Level 12)
+                                    </div>
                                 </div>
 
                                 <!-- Step 3: Alert Triage -->
-                                <div class="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center">
-                                    <strong class="text-white text-sm block font-sans">Alert Triage &amp; Dynamic Splitting</strong>
-                                    <span class="text-white/50 text-[11px]">Severity Scoring &middot; Noise Reduction &middot; Threat Verification</span>
+                                <div class="soc-flow-node text-center">
+                                    <div class="inline-flex items-center gap-2 mb-1">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4 text-red" xmlns="http://www.w3.org/2000/svg"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                                        <strong class="text-white text-sm font-bold tracking-wide">Alert Triage &amp; Dynamic Splitting</strong>
+                                    </div>
+                                    <p class="text-white/60 text-xs">Automated severity scoring, false positive filtering &amp; parallel verification dispatch</p>
                                 </div>
 
-                                <div class="flex justify-center text-red py-0.5">
-                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Parallel Correlation</span>
+                                <!-- Connector: Triage to Parallel -->
+                                <div class="soc-connector">
+                                    <div class="soc-connector-badge">
+                                        <span>&darr;</span> Parallel Correlation
+                                    </div>
                                 </div>
 
                                 <!-- Step 4: Parallel Threat Intel & Snort -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
-                                        <strong class="text-white text-xs block font-sans">Threat Intelligence</strong>
-                                        <span class="text-red text-[11px] block mt-0.5 font-bold">VirusTotal &middot; AbuseIPDB</span>
-                                        <span class="text-white/40 text-[10px]">Automated IOC Lookups &amp; IP Scoring</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    <div class="soc-flow-node">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="h-2 w-2 rounded-full bg-red"></div>
+                                            <strong class="text-white text-xs font-bold uppercase tracking-wider">Threat Intelligence</strong>
+                                        </div>
+                                        <span class="text-red font-mono text-[11px] font-bold block">VirusTotal &middot; AbuseIPDB</span>
+                                        <p class="text-white/50 text-[11px] mt-1 leading-relaxed">Automated IOC queries, malicious reputation scoring &amp; external feed correlation</p>
                                     </div>
-                                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
-                                        <strong class="text-white text-xs block font-sans">Snort NIDS</strong>
-                                        <span class="text-red text-[11px] block mt-0.5 font-bold">Network Detection</span>
-                                        <span class="text-white/40 text-[10px]">Real-time Packet &amp; Signature Analysis</span>
+                                    
+                                    <div class="soc-flow-node">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <div class="h-2 w-2 rounded-full bg-red"></div>
+                                            <strong class="text-white text-xs font-bold uppercase tracking-wider">Network Detection</strong>
+                                        </div>
+                                        <span class="text-red font-mono text-[11px] font-bold block">Snort NIDS</span>
+                                        <p class="text-white/50 text-[11px] mt-1 leading-relaxed">Deep packet inspection, signature matching &amp; suspicious C2 beaconing alerts</p>
                                     </div>
                                 </div>
 
-                                <div class="flex justify-center text-red py-0.5">
-                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Investigation &amp; Evidence</span>
+                                <!-- Connector: Parallel to Investigation -->
+                                <div class="soc-connector">
+                                    <div class="soc-connector-badge">
+                                        <span>&darr;</span> Evidence Aggregation &amp; Investigation
+                                    </div>
                                 </div>
 
                                 <!-- Step 5: TheHive -->
-                                <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
-                                    <div class="flex items-center gap-3">
-                                        <div class="rounded-lg bg-red/10 p-2 text-red">
-                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                                <div class="soc-flow-node flex items-center justify-between">
+                                    <div class="flex items-center gap-3.5">
+                                        <div class="rounded-xl bg-red/15 border border-red/30 p-2.5 text-red flex items-center justify-center">
+                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                                         </div>
                                         <div>
-                                            <strong class="text-white text-sm block font-sans">THEHIVE</strong>
-                                            <span class="text-white/50 text-[11px]">Security Incident &amp; Case Management Platform</span>
+                                            <div class="flex items-center gap-2">
+                                                <strong class="text-white text-sm font-bold tracking-wide">THEHIVE</strong>
+                                                <span class="rounded bg-red/20 px-2 py-0.5 text-[10px] font-mono text-red font-bold">CASE #104</span>
+                                            </div>
+                                            <p class="text-white/60 text-xs mt-0.5">Security incident management, observable tracking &amp; investigation escalation</p>
                                         </div>
                                     </div>
-                                    <span class="rounded bg-red/20 px-2 py-1 text-[10px] text-red font-bold">CASE_MGMT</span>
+                                    <span class="rounded bg-white/10 px-2.5 py-1 text-[10px] font-mono text-white/80 font-bold">Case Mgmt</span>
                                 </div>
 
-                                <div class="flex justify-center text-red py-0.5">
-                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Playbook Triggering</span>
+                                <!-- Connector: TheHive to IR -->
+                                <div class="soc-connector">
+                                    <div class="soc-connector-badge">
+                                        <span>&darr;</span> Execute Containment Playbook
+                                    </div>
                                 </div>
 
                                 <!-- Step 6: Incident Response -->
-                                <div class="rounded-xl border border-white/15 bg-gradient-to-r from-red/20 via-black to-red/10 p-3.5 text-center">
-                                    <strong class="text-white text-sm font-sans tracking-wide uppercase">Incident Response &amp; Mitigation</strong>
-                                    <span class="text-white/60 text-[11px] block mt-0.5">Host Isolation &middot; Threat Neutralization &middot; Root Cause Analysis</span>
+                                <div class="rounded-xl border border-white/20 bg-gradient-to-r from-red/25 via-[#0e0202] to-red/15 p-4 text-center">
+                                    <div class="inline-flex items-center gap-2 mb-1">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4 text-red" xmlns="http://www.w3.org/2000/svg"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                                        <strong class="text-white text-sm font-bold uppercase tracking-wider">Incident Response &amp; Mitigation</strong>
+                                    </div>
+                                    <p class="text-white/70 text-xs mt-0.5">Host isolation &middot; Malicious process termination &middot; Network blocking &middot; Root cause analysis</p>
                                 </div>
 
                             </div>

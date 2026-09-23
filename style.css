@@ -24,9 +24,22 @@ body {
   text-align: justify !important;
 }
 
+.console-card {
+  border-radius: 16px !important;
+  min-height: 165px !important;
+  padding: 1.25rem 1.25rem 1.75rem 1.25rem !important;
+}
+
 .console-card h3 {
-  font-size: clamp(1.15rem, 1.8vw, 1.65rem) !important;
+  margin-top: 2rem !important;
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem) !important;
   line-height: 1.2 !important;
+}
+
+.console-card p {
+  font-size: 0.85rem !important;
+  line-height: 1.55 !important;
+  margin-top: 0.4rem !important;
 }
 
 /* Scroll Reveal Animations */

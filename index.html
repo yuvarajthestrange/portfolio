@@ -363,35 +363,24 @@
             <div class="mx-auto max-w-[1180px] px-5 md:px-10">
                 <div class="mb-12 reveal text-left">
                     <p class="mb-3 text-xs font-bold uppercase tracking-[0.35em] text-red">Featured Hero Project</p>
-                    <h2 class="font-bebas text-[clamp(2.6rem,5.5vw,5.5rem)] leading-[0.85] tracking-normal uppercase text-white">SECURITY OPERATIONS &amp; DETECTION LAB</h2>
+                    <h2 class="soc-hero-title">SECURITY OPERATIONS &amp; DETECTION LAB</h2>
                     <p class="mt-3 font-clash text-[clamp(1.2rem,2.2vw,2rem)] font-semibold text-white/90">Windows Security Monitoring &amp; Detection Platform</p>
                     <p class="mt-4 max-w-3xl text-sm leading-7 text-white/65 md:text-base text-justify">
                         An end-to-end enterprise SOC monitoring, telemetry aggregation, and automated threat investigation pipeline deployed across Windows endpoints. Combines kernel-level event tracing, centralized SIEM correlation, network intrusion detection, automated threat intelligence scoring, and incident triage into a synchronized incident response workflow.
                     </p>
                     
                     <!-- Tech Stack Badges -->
-                    <div class="mt-6 flex flex-wrap gap-2">
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-red/40 bg-red/10 px-3.5 py-1 text-xs font-semibold text-red">
-                            <span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span> Wazuh
+                    <div class="soc-tech-list">
+                        <span class="soc-tech-badge featured">
+                            <span class="h-2 w-2 rounded-full bg-red animate-pulse" style="display:inline-block;width:8px;height:8px;border-radius:99px;background:#ff1e1e;"></span>
+                            Wazuh
                         </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
-                            Sysmon
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
-                            Snort
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
-                            TheHive
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
-                            Windows
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
-                            Python
-                        </span>
-                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
-                            Threat Intelligence
-                        </span>
+                        <span class="soc-tech-badge">Sysmon</span>
+                        <span class="soc-tech-badge">Snort</span>
+                        <span class="soc-tech-badge">TheHive</span>
+                        <span class="soc-tech-badge">Windows</span>
+                        <span class="soc-tech-badge">Python</span>
+                        <span class="soc-tech-badge">Threat Intelligence</span>
                     </div>
                 </div>
 
@@ -401,12 +390,15 @@
                     <!-- Left Column: Detection Architecture & Pipeline Nodes -->
                     <div class="space-y-6 reveal-left">
                         <div class="rounded-[22px] border border-white/12 bg-[#080808] p-6 shadow-2xl relative overflow-hidden">
-                            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+                            <div class="soc-flowchart-header">
                                 <div class="flex items-center gap-2.5">
-                                    <div class="h-3 w-3 rounded-full bg-red animate-pulse"></div>
+                                    <div class="h-3 w-3 rounded-full bg-red animate-pulse" style="display:inline-block;width:10px;height:10px;border-radius:99px;background:#ff1e1e;"></div>
                                     <h3 class="text-sm font-bold uppercase tracking-wider text-white">Detection Pipeline Flowchart</h3>
                                 </div>
-                                <span class="font-mono text-[10px] text-white/40 uppercase">SOC_PIPELINE // VERIFIED</span>
+                                <span class="soc-verified-badge">
+                                    <span class="soc-verified-dot"></span>
+                                    SOC_PIPELINE // VERIFIED
+                                </span>
                             </div>
 
                             <!-- Visual Flowchart Nodes -->
@@ -581,10 +573,10 @@
                         
                         <!-- Module Switchers -->
                         <div class="space-y-2.5">
-                            <div class="flex items-center justify-between px-1">
-                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Select Telemetry Layer</p>
-                                <span class="font-mono text-[10px] text-red font-semibold flex items-center gap-1.5">
-                                    <span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span>
+                            <div class="soc-telemetry-header">
+                                <p class="title">Select Telemetry Layer</p>
+                                <span class="badge">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse" style="display:inline-block;width:6px;height:6px;border-radius:99px;background:#ff1e1e;"></span>
                                     INTERACTIVE CONSOLE
                                 </span>
                             </div>

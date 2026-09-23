@@ -358,121 +358,242 @@
             </div>
         </section>
 
-        <!-- Featured Project (Device Simulator) -->
-        <section class="hyper-section section-pad bg-black text-white overflow-hidden">
+        <!-- Hero Project: Security Operations & Detection Lab -->
+        <section id="detection-lab" class="hyper-section section-pad bg-black text-white overflow-hidden border-t border-white/10">
             <div class="mx-auto max-w-[1180px] px-5 md:px-10">
-                <div class="mb-10 reveal">
-                    <p class="mb-4 text-xs font-bold uppercase tracking-[0.35em] text-red">Featured Lab Project</p>
-                    <h2 class="split-heading font-bebas text-[clamp(2.4rem,5.2vw,5.5rem)] leading-[0.84]">Modular VAPT Automation Framework</h2>
+                <div class="mb-12 reveal text-left">
+                    <p class="mb-3 text-xs font-bold uppercase tracking-[0.35em] text-red">Featured Hero Project</p>
+                    <h2 class="font-bebas text-[clamp(2.6rem,5.5vw,5.5rem)] leading-[0.85] tracking-normal uppercase text-white">SECURITY OPERATIONS &amp; DETECTION LAB</h2>
+                    <p class="mt-3 font-clash text-[clamp(1.2rem,2.2vw,2rem)] font-semibold text-white/90">Windows Security Monitoring &amp; Detection Platform</p>
+                    <p class="mt-4 max-w-3xl text-sm leading-7 text-white/65 md:text-base text-justify">
+                        An end-to-end enterprise SOC monitoring, telemetry aggregation, and automated threat investigation pipeline deployed across Windows endpoints. Combines kernel-level event tracing, centralized SIEM correlation, network intrusion detection, automated threat intelligence scoring, and incident triage into a synchronized incident response workflow.
+                    </p>
+                    
+                    <!-- Tech Stack Badges -->
+                    <div class="mt-6 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-red/40 bg-red/10 px-3.5 py-1 text-xs font-semibold text-red">
+                            <span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span> Wazuh
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
+                            Sysmon
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
+                            Snort
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
+                            TheHive
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
+                            Windows
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
+                            Python
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1 text-xs font-medium text-white/80">
+                            Threat Intelligence
+                        </span>
+                    </div>
                 </div>
-                
-                <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] items-stretch">
-                    <div class="flex flex-col justify-between space-y-6 reveal-left">
-                        <div>
-                            <p class="text-white/70 text-base leading-8 md:text-lg text-justify">Developed a modular, Python-driven automated web penetration testing framework. Orchestrates and automates multiple phases of vulnerability scanning, SQLi validation, secure code comparisons, and automated PDF remediation report generation.</p>
-                            <div class="mt-5 flex flex-wrap gap-2">
-                                <span class="flex items-center gap-1.5 rounded-md bg-white/5 border border-white/10 px-3 py-1.5 text-xs text-white/90">
-                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-red" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
-                                        <rect x="9" y="9" width="6" height="6"></rect>
-                                    </svg> Python 3.x
-                                </span>
-                                <span class="flex items-center gap-1.5 rounded-md bg-white/5 border border-white/10 px-3 py-1.5 text-xs text-white/90">
-                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-red" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                    </svg> Nmap &amp; HTTP Modules
-                                </span>
-                                <span class="flex items-center gap-1.5 rounded-md bg-white/5 border border-white/10 px-3 py-1.5 text-xs text-white/90">
-                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-red" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                    </svg> Automated Reports
-                                </span>
+
+                <!-- Main Architecture & Live Telemetry Grid -->
+                <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start">
+                    
+                    <!-- Left Column: Detection Architecture & Pipeline Nodes -->
+                    <div class="space-y-6 reveal-left">
+                        <div class="rounded-[22px] border border-white/12 bg-[#080808] p-6 shadow-2xl relative overflow-hidden">
+                            <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="h-3 w-3 rounded-full bg-red animate-pulse"></div>
+                                    <h3 class="text-sm font-bold uppercase tracking-wider text-white">Detection Pipeline Flowchart</h3>
+                                </div>
+                                <span class="font-mono text-[10px] text-white/40 uppercase">SOC_PIPELINE // VERIFIED</span>
                             </div>
-                        </div>
-                        
-                        <div class="space-y-2.5">
-                            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Select Framework Module</p>
-                            <div class="grid gap-2 sm:grid-cols-2 md:grid-cols-1">
-                                <button class="device-module-btn active group flex items-center justify-between rounded-lg border p-4 text-left transition-all border-red bg-red/5 text-white" data-module="scan">
-                                    <div class="flex items-center gap-3">
-                                        <div class="rounded-md p-2 transition-colors bg-red/20 text-red">
-                                            <i class="uil uil-search-alt text-lg"></i>
-                                        </div>
-                                        <div>
-                                            <h4 class="text-sm font-extrabold text-white transition-colors">Target Scanning</h4>
-                                            <p class="text-xs text-white/50">Target port scanning and banner grabbing</p>
-                                        </div>
-                                    </div>
-                                    <span class="text-xs font-mono text-red opacity-80">NMAP_MOD</span>
-                                </button>
+
+                            <!-- Visual Flowchart Nodes -->
+                            <div class="space-y-2.5 font-mono text-xs">
                                 
-                                <button class="device-module-btn group flex items-center justify-between rounded-lg border p-4 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="owasp">
+                                <!-- Step 1: Endpoint -->
+                                <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
                                     <div class="flex items-center gap-3">
-                                        <div class="rounded-md p-2 transition-colors bg-white/5 group-hover:text-white">
-                                            <i class="uil uil-bug text-lg"></i>
+                                        <div class="rounded-lg bg-red/10 p-2 text-red">
+                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
                                         </div>
                                         <div>
-                                            <h4 class="text-sm font-extrabold text-white transition-colors">OWASP Analysis</h4>
-                                            <p class="text-xs text-white/50">XSS, SQL Injection validation engine</p>
+                                            <strong class="text-white text-sm block font-sans">WINDOWS ENDPOINT</strong>
+                                            <span class="text-white/50 text-[11px]">Telemetry Source &middot; Process Execution &middot; Network Events</span>
                                         </div>
                                     </div>
-                                    <span class="text-xs font-mono text-red opacity-80">ATTACK_MOD</span>
-                                </button>
-                                
-                                <button class="device-module-btn group flex items-center justify-between rounded-lg border p-4 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="code">
+                                    <span class="rounded bg-white/5 px-2 py-1 text-[10px] text-white/70">Sysmon</span>
+                                </div>
+
+                                <div class="flex justify-center text-red py-0.5">
+                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Kernel Telemetry</span>
+                                </div>
+
+                                <!-- Step 2: Wazuh SIEM -->
+                                <div class="rounded-xl border border-red/40 bg-red/[0.06] p-3.5 text-center hover:bg-red/[0.09] transition-colors relative">
+                                    <div class="inline-flex items-center gap-2 mb-1">
+                                        <span class="h-2 w-2 rounded-full bg-red"></span>
+                                        <strong class="text-white text-base font-sans tracking-wide">WAZUH SIEM</strong>
+                                    </div>
+                                    <p class="text-white/60 text-[11px] font-sans">Central Log Analysis &middot; Custom Detection Rules &middot; MITRE ATT&amp;CK</p>
+                                </div>
+
+                                <div class="flex justify-center text-red py-0.5">
+                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Detection Engine</span>
+                                </div>
+
+                                <!-- Step 3: Alert Triage -->
+                                <div class="rounded-xl border border-white/10 bg-white/[0.03] p-3 text-center">
+                                    <strong class="text-white text-sm block font-sans">Alert Triage &amp; Dynamic Splitting</strong>
+                                    <span class="text-white/50 text-[11px]">Severity Scoring &middot; Noise Reduction &middot; Threat Verification</span>
+                                </div>
+
+                                <div class="flex justify-center text-red py-0.5">
+                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Parallel Correlation</span>
+                                </div>
+
+                                <!-- Step 4: Parallel Threat Intel & Snort -->
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
+                                        <strong class="text-white text-xs block font-sans">Threat Intelligence</strong>
+                                        <span class="text-red text-[11px] block mt-0.5 font-bold">VirusTotal &middot; AbuseIPDB</span>
+                                        <span class="text-white/40 text-[10px]">Automated IOC Lookups &amp; IP Scoring</span>
+                                    </div>
+                                    <div class="rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
+                                        <strong class="text-white text-xs block font-sans">Snort NIDS</strong>
+                                        <span class="text-red text-[11px] block mt-0.5 font-bold">Network Detection</span>
+                                        <span class="text-white/40 text-[10px]">Real-time Packet &amp; Signature Analysis</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex justify-center text-red py-0.5">
+                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Investigation &amp; Evidence</span>
+                                </div>
+
+                                <!-- Step 5: TheHive -->
+                                <div class="flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.03] p-3 hover:border-red/40 transition-colors">
                                     <div class="flex items-center gap-3">
-                                        <div class="rounded-md p-2 transition-colors bg-white/5 group-hover:text-white">
-                                            <i class="uil uil-file-check-alt text-lg"></i>
+                                        <div class="rounded-lg bg-red/10 p-2 text-red">
+                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                                         </div>
                                         <div>
-                                            <h4 class="text-sm font-extrabold text-white transition-colors">APK Static Analysis</h4>
-                                            <p class="text-xs text-white/50">Decompile APKs and review static code</p>
+                                            <strong class="text-white text-sm block font-sans">THEHIVE</strong>
+                                            <span class="text-white/50 text-[11px]">Security Incident &amp; Case Management Platform</span>
                                         </div>
                                     </div>
-                                    <span class="text-xs font-mono text-red opacity-80">APK_MOD</span>
-                                </button>
+                                    <span class="rounded bg-red/20 px-2 py-1 text-[10px] text-red font-bold">CASE_MGMT</span>
+                                </div>
+
+                                <div class="flex justify-center text-red py-0.5">
+                                    <span class="text-[10px] text-white/40 font-mono flex items-center gap-1">&darr; Playbook Triggering</span>
+                                </div>
+
+                                <!-- Step 6: Incident Response -->
+                                <div class="rounded-xl border border-white/15 bg-gradient-to-r from-red/20 via-black to-red/10 p-3.5 text-center">
+                                    <strong class="text-white text-sm font-sans tracking-wide uppercase">Incident Response &amp; Mitigation</strong>
+                                    <span class="text-white/60 text-[11px] block mt-0.5">Host Isolation &middot; Threat Neutralization &middot; Root Cause Analysis</span>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="relative flex items-center justify-center min-h-[460px] reveal-right">
-                        <div class="absolute top-1/2 left-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,#ff1e1e_0%,rgba(255,30,30,0.06)_45%,transparent_70%)] blur-2xl pointer-events-none"></div>
-                        <div class="relative w-full max-w-[390px] border border-white/12 bg-[#0a0a0a] rounded-[28px] p-5 shadow-2xl flex flex-col justify-between min-h-[440px]">
+
+                    <!-- Right Column: Interactive SOC Terminal & Architecture Schematics -->
+                    <div class="space-y-4 reveal-right">
+                        
+                        <!-- Module Switchers -->
+                        <div class="space-y-2">
+                            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Select Telemetry Layer</p>
+                            <div class="grid grid-cols-2 gap-2">
+                                <button class="device-module-btn active flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-red bg-red/5 text-white" data-module="architecture">
+                                    <i class="uil uil-sitemap text-base text-red"></i>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white">Full Architecture</h4>
+                                        <p class="text-[10px] text-white/50">ASCII Schematic View</p>
+                                    </div>
+                                </button>
+                                <button class="device-module-btn flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="sysmon">
+                                    <i class="uil uil-desktop text-base text-white/70"></i>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white">Sysmon Endpoint</h4>
+                                        <p class="text-[10px] text-white/50">Event ID 1 Telemetry</p>
+                                    </div>
+                                </button>
+                                <button class="device-module-btn flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="wazuh">
+                                    <i class="uil uil-shield-check text-base text-white/70"></i>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white">Wazuh SIEM Rule</h4>
+                                        <p class="text-[10px] text-white/50">Alert Level 12 Trigger</p>
+                                    </div>
+                                </button>
+                                <button class="device-module-btn flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="thehive">
+                                    <i class="uil uil-bell text-base text-white/70"></i>
+                                    <div>
+                                        <h4 class="text-xs font-bold text-white">TheHive Incident</h4>
+                                        <p class="text-[10px] text-white/50">Case Escalation &amp; IR</p>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Terminal Display -->
+                        <div class="relative w-full border border-white/12 bg-[#0a0a0a] rounded-[24px] p-5 shadow-2xl flex flex-col justify-between min-h-[490px]">
                             <div class="flex items-center justify-between pb-3 border-b border-white/8 text-[9px] uppercase tracking-wider text-white/40 font-mono">
-                                <span class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span> PORT_FRAMEWORK</span>
-                                <span class="flex items-center gap-2">YUVARAJC SYSTEM</span>
-                                <span class="text-red">ACTIVE</span>
+                                <span class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span> SOC_DETECTION_ENGINE</span>
+                                <span class="flex items-center gap-2">HOST: WIN-SOC-LAB</span>
+                                <span class="text-red">ACTIVE MONITORING</span>
                             </div>
                             
-                            <div class="relative my-4 flex-1 rounded-[14px] bg-[#020302] border border-white/10 p-4 font-mono text-[10px] overflow-hidden flex flex-col justify-between min-h-[290px] shadow-[inset_0_0_24px_rgba(0,0,0,0.95)]">
+                            <div class="relative my-3 flex-1 rounded-[14px] bg-[#020302] border border-white/10 p-4 font-mono text-[10px] overflow-hidden flex flex-col justify-between min-h-[380px] shadow-[inset_0_0_24px_rgba(0,0,0,0.95)]">
                                 <div class="absolute inset-0 bg-scanlines pointer-events-none opacity-15"></div>
                                 <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_3px,3px_100%] pointer-events-none opacity-20"></div>
                                 
                                 <div class="flex items-center justify-between text-red font-bold text-xs pb-1.5 border-b border-red/10">
-                                    <span class="uppercase tracking-widest flex items-center gap-1" id="terminal-heading">Target Scanning</span>
-                                    <span class="text-[10px] font-semibold text-white/60">SYS_OK</span>
+                                    <span class="uppercase tracking-widest flex items-center gap-1" id="terminal-heading">Full Architecture Schematic</span>
+                                    <span class="text-[10px] font-semibold text-white/60">ONLINE</span>
                                 </div>
                                 
-                                <div class="relative flex-1 my-3 rounded bg-black/40 border border-white/5 p-2 overflow-hidden flex flex-col justify-start text-[9px] space-y-1" id="terminal-screen">
-                                    <div class="text-white/40">&gt; Initializing NMAP target scan...</div>
-                                    <div class="text-white/60">&gt; Target host: 192.168.1.1</div>
-                                    <div class="text-red/90">&gt; Port 80/tcp (HTTP) - OPEN (Apache 2.4.41)</div>
-                                    <div class="text-red/90">&gt; Port 22/tcp (SSH) - OPEN (OpenSSH 8.2p1)</div>
-                                    <div class="text-white/80">&gt; Scan complete. 2 open ports discovered.</div>
+                                <div class="relative flex-1 my-2 rounded bg-black/50 border border-white/5 p-3 overflow-x-auto flex flex-col justify-start text-[9px] md:text-[10px] leading-relaxed font-mono" id="terminal-screen">
+                                    <pre class="text-white/85 font-mono text-[9px] md:text-[10px] leading-tight select-none whitespace-pre">
+                 WINDOWS ENDPOINT
+                       │
+                    Sysmon
+                       │
+                       ▼
+                 ┌───────────┐
+                 │   Wazuh   │
+                 │    SIEM   │
+                 └─────┬─────┘
+                       │
+                  Detection
+                       │
+                       ▼
+                  Alert Triage
+                       │
+          ┌────────────┴────────────┐
+          ▼                         ▼
+   Threat Intelligence         Snort
+   VirusTotal / AbuseIPDB      Network Detection
+          │                         │
+          └────────────┬────────────┘
+                       ▼
+                   Investigation
+                       │
+                       ▼
+                    TheHive
+                       │
+                       ▼
+               Incident Response</pre>
                                 </div>
                             </div>
                             
-                            <div class="flex items-center justify-between mt-1 px-1">
-                                <div class="flex items-center gap-2">
-                                    <div class="h-6 w-6 rounded-full border border-white/12 bg-white/5 flex items-center justify-center text-[10px] text-white/60 font-bold font-mono">A</div>
-                                    <div class="h-6 w-6 rounded-full border border-white/12 bg-white/5 flex items-center justify-center text-[10px] text-white/60 font-bold font-mono">B</div>
-                                </div>
-                                <div class="flex gap-1.5">
-                                    <div class="h-2 w-5 bg-white/10 rounded"></div>
-                                    <div class="h-2 w-5 bg-white/10 rounded"></div>
-                                </div>
+                            <div class="flex items-center justify-between mt-1 px-1 text-[10px] font-mono text-white/40">
+                                <span>STATUS: ACTIVE DEFENSE</span>
+                                <span class="text-red">INTEGRITY 100%</span>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

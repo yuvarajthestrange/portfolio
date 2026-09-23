@@ -39,34 +39,73 @@ const terminalHeading = document.getElementById('terminal-heading');
 const terminalScreen = document.getElementById('terminal-screen');
 
 const moduleLogs = {
-    scan: {
-        heading: "Target Scanning",
+    architecture: {
+        heading: "Full Architecture Schematic",
         content: `
-            <div class="text-white/40">&gt; Initializing NMAP target scan...</div>
-            <div class="text-white/60">&gt; Target host: 192.168.1.1</div>
-            <div class="text-red/90">&gt; Port 80/tcp (HTTP) - OPEN (Apache 2.4.41)</div>
-            <div class="text-red/90">&gt; Port 22/tcp (SSH) - OPEN (OpenSSH 8.2p1)</div>
-            <div class="text-white/80">&gt; Scan complete. 2 open ports discovered.</div>
+            <pre class="text-white/85 font-mono text-[9px] md:text-[10px] leading-tight select-none whitespace-pre">
+                 WINDOWS ENDPOINT
+                       │
+                    Sysmon
+                       │
+                       ▼
+                 ┌───────────┐
+                 │   Wazuh   │
+                 │    SIEM   │
+                 └─────┬─────┘
+                       │
+                  Detection
+                       │
+                       ▼
+                  Alert Triage
+                       │
+          ┌────────────┴────────────┐
+          ▼                         ▼
+   Threat Intelligence         Snort
+   VirusTotal / AbuseIPDB      Network Detection
+          │                         │
+          └────────────┬────────────┘
+                       ▼
+                   Investigation
+                       │
+                       ▼
+                    TheHive
+                       │
+                       ▼
+               Incident Response</pre>
         `
     },
-    owasp: {
-        heading: "OWASP Vulnerability Scan",
+    sysmon: {
+        heading: "Sysmon Endpoint Telemetry",
         content: `
-            <div class="text-white/40">&gt; Auditing target web parameter inputs...</div>
-            <div class="text-red/90">&gt; [CRITICAL] SQLi vulnerability identified at parameter 'id'</div>
-            <div class="text-yellow-400">&gt; [WARNING] Missing Secure cookie attribute on session cookies</div>
-            <div class="text-white/60">&gt; [INFO] XSS validation passed successfully</div>
-            <div class="text-red/90">&gt; Severity: HIGH. Mitigation recommended.</div>
+            <div class="text-white/40">&gt; Event ID 1: Process Creation Detected</div>
+            <div class="text-white/60">&gt; UtcTime: 2026-09-23 10:52:14.301</div>
+            <div class="text-white/60">&gt; ProcessGuid: {a1b2c3d4-e5f6-7890-1234-56789abcdef0}</div>
+            <div class="text-red/90">&gt; Image: C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe</div>
+            <div class="text-yellow-400">&gt; CommandLine: powershell.exe -enc SQBFAFgAIAAoAE4AZQB3...</div>
+            <div class="text-white/60">&gt; ParentImage: C:\\Windows\\explorer.exe</div>
+            <div class="text-red/90">&gt; [ALERT] Suspicious obfuscated payload execution logged by Sysmon.</div>
         `
     },
-    code: {
-        heading: "APK Static Analyzer",
+    wazuh: {
+        heading: "Wazuh SIEM Detection Rule",
         content: `
-            <div class="text-white/40">&gt; Decompiling mobile build package...</div>
-            <div class="text-white/60">&gt; Found hardcoded API keys in class 'SecureConfig'</div>
-            <div class="text-red/90">&gt; [FLAG] Exposed AWS endpoint detected in config string</div>
-            <div class="text-yellow-400">&gt; [WARNING] Dexguard obfuscation not fully implemented</div>
-            <div class="text-white/80">&gt; Analysis done. 2 security flaws flagged.</div>
+            <div class="text-white/40">&gt; Wazuh Rule ID: 100201 [Severity Level: 12 - HIGH]</div>
+            <div class="text-white/60">&gt; Rule Description: PowerShell executed with encoded command-line</div>
+            <div class="text-red/90">&gt; MITRE ATT&amp;CK: T1059.001 (Command &amp; Scripting Interpreter)</div>
+            <div class="text-white/60">&gt; Agent: WIN-ENDPOINT-01 (192.168.1.105)</div>
+            <div class="text-yellow-400">&gt; Correlation: Child process spawned from user-level interactive shell</div>
+            <div class="text-red/90">&gt; Action: Forwarding to Alert Triage engine for automated enrichment.</div>
+        `
+    },
+    thehive: {
+        heading: "TheHive Case Management & IR",
+        content: `
+            <div class="text-white/40">&gt; Opening Incident Case #104 in TheHive...</div>
+            <div class="text-white/60">&gt; Title: [INCIDENT] Malicious PowerShell Execution on Windows Endpoint</div>
+            <div class="text-red/90">&gt; Threat Intel: VirusTotal Malicious Score (48/72 vendors)</div>
+            <div class="text-yellow-400">&gt; Snort Alert: Outbound C2 beaconing detected to 185.220.101.5:4444</div>
+            <div class="text-white/60">&gt; Playbook: Host Isolation &amp; Memory Dump Initiated</div>
+            <div class="text-red/90">&gt; Status: Escalated to SOC Tier 2 Analyst. Host contained.</div>
         `
     }
 };
@@ -157,19 +196,29 @@ if (counters.length > 0) {
         });
     };
 
-    // Simple observer
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
+    // Scroll Counter Activator Fallback
+    let countersRun = false;
+    const checkCountersScroll = () => {
+        if (countersRun) return;
+        const counterCard = document.querySelector('.counter-card');
+        if (counterCard) {
+            const rect = counterCard.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
                 runCounters();
-                observer.unobserve(entry.target);
+                countersRun = true;
+                window.removeEventListener('scroll', checkCountersScroll);
             }
-        });
-    }, { threshold: 0.1 });
-
-    const counterCard = document.querySelector('.counter-card');
-    if (counterCard && counterCard.parentElement) {
-        observer.observe(counterCard.parentElement);
+        }
+    };
+    window.addEventListener('scroll', checkCountersScroll);
+    window.addEventListener('resize', checkCountersScroll);
+    
+    // Run once on load
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', checkCountersScroll);
+    } else {
+        checkCountersScroll();
     }
 }
 
@@ -186,19 +235,29 @@ if (navShell) {
     });
 }
 
-// Scroll Reveal Observer
+// Scroll Reveal Engine
 const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
 if (revealElements.length > 0) {
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                revealObserver.unobserve(entry.target);
+    const revealOnScroll = () => {
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+        revealElements.forEach(el => {
+            if (!el.classList.contains('active')) {
+                const rect = el.getBoundingClientRect();
+                // Trigger when 10% of the element is visible
+                const triggerPoint = windowHeight - 40;
+                if (rect.top <= triggerPoint && rect.bottom >= 0) {
+                    el.classList.add('active');
+                }
             }
         });
-    }, {
-        threshold: 0.02
-    });
-
-    revealElements.forEach(el => revealObserver.observe(el));
+    };
+    
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('resize', revealOnScroll);
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', revealOnScroll);
+    } else {
+        revealOnScroll();
+    }
 }

@@ -396,7 +396,7 @@
                 </div>
 
                 <!-- Main Architecture & Live Telemetry Grid -->
-                <div class="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] items-start">
+                <div class="soc-main-grid items-start">
                     
                     <!-- Left Column: Detection Architecture & Pipeline Nodes -->
                     <div class="space-y-6 reveal-left">
@@ -413,126 +413,163 @@
                             <div class="space-y-3 font-sans">
                                 
                                 <!-- Step 1: Endpoint -->
-                                <div class="soc-flow-node flex items-center justify-between">
-                                    <div class="flex items-center gap-3.5">
-                                        <div class="rounded-xl bg-red/15 border border-red/30 p-2.5 text-red flex items-center justify-center">
-                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
-                                        </div>
-                                        <div>
-                                            <div class="flex items-center gap-2">
-                                                <strong class="text-white text-sm font-bold tracking-wide">WINDOWS ENDPOINT</strong>
-                                                <span class="rounded bg-white/10 px-2 py-0.5 text-[10px] font-mono text-white/80">WIN-10/11</span>
-                                            </div>
-                                            <p class="text-white/60 text-xs mt-0.5">Kernel telemetry source &middot; Process execution, network connections &amp; file events</p>
-                                        </div>
+                                <div class="soc-flow-node">
+                                    <div class="soc-icon-box">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                                        </svg>
                                     </div>
-                                    <span class="rounded-full border border-red/40 bg-red/10 px-2.5 py-1 text-[10px] font-mono text-red font-bold">Sysmon</span>
+                                    <div class="soc-node-content">
+                                        <div class="flex items-center justify-between gap-2 mb-1">
+                                            <div class="soc-node-title" style="margin-bottom: 0;">
+                                                <span>WINDOWS ENDPOINT</span>
+                                                <span class="rounded bg-white/10 px-2 py-0.5 text-[10px] font-mono text-white/80">WIN-10 / 11</span>
+                                            </div>
+                                            <span class="soc-tag" style="color: #ff4d4d; border-color: rgba(255,30,30,0.4); background: rgba(255,30,30,0.12); font-weight: 700; padding: 0.15rem 0.55rem; font-size: 0.68rem;">Sysmon Active</span>
+                                        </div>
+                                        <p class="soc-node-desc">Kernel telemetry source &middot; Monitored process creation (Event ID 1), raw network connections (Event ID 3), and file events (Event ID 11).</p>
+                                    </div>
                                 </div>
 
                                 <!-- Connector: Sysmon to Wazuh -->
                                 <div class="soc-connector">
                                     <div class="soc-connector-badge">
-                                        <span>&darr;</span> Sysmon Event Forwarding (Event ID 1, 3, 11)
+                                        <i class="uil uil-arrow-down text-xs"></i>
+                                        <span>Sysmon Event Forwarding (Event ID 1, 3, 11)</span>
                                     </div>
                                 </div>
 
                                 <!-- Step 2: Wazuh SIEM (Central Hub) -->
-                                <div class="soc-hub-card text-center">
-                                    <div class="inline-flex items-center gap-2 mb-1.5">
-                                        <span class="h-2.5 w-2.5 rounded-full bg-red animate-ping"></span>
-                                        <strong class="text-white text-lg font-bebas tracking-wider uppercase text-red">WAZUH SIEM</strong>
-                                        <span class="rounded bg-red/20 px-2 py-0.5 text-[10px] font-mono text-white font-bold">CENTRAL_HUB</span>
+                                <div class="soc-hub-card">
+                                    <div class="soc-hub-title">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-red animate-ping mr-1"></span>
+                                        <span>WAZUH SIEM</span>
+                                        <span class="rounded bg-red/20 border border-red/40 px-2.5 py-0.5 text-[11px] font-mono text-white font-bold ml-2">CENTRAL HUB</span>
                                     </div>
-                                    <p class="text-white/85 text-xs font-medium">Real-Time Log Ingestion &amp; Behavioral Decoding Engine</p>
-                                    <div class="mt-2.5 flex flex-wrap items-center justify-center gap-2 text-[10px] font-mono text-white/60">
-                                        <span class="rounded bg-white/5 border border-white/10 px-2 py-0.5">Custom XML Rules</span>
-                                        <span class="rounded bg-white/5 border border-white/10 px-2 py-0.5">MITRE ATT&amp;CK Matrix</span>
-                                        <span class="rounded bg-white/5 border border-white/10 px-2 py-0.5">Correlation Engine</span>
+                                    <p class="soc-hub-desc">Real-Time Security Event Ingestion &middot; Log Parsing &middot; Threat Decoding Engine</p>
+                                    <div class="soc-tag-list">
+                                        <span class="soc-tag"><i class="uil uil-file-code-alt mr-1.5 text-red"></i> Custom XML Detection Rules</span>
+                                        <span class="soc-tag"><i class="uil uil-shield-check mr-1.5 text-red"></i> MITRE ATT&amp;CK Matrix Mapping</span>
+                                        <span class="soc-tag"><i class="uil uil-bolt mr-1.5 text-red"></i> Correlation Engine</span>
                                     </div>
                                 </div>
 
                                 <!-- Connector: Wazuh to Triage -->
                                 <div class="soc-connector">
                                     <div class="soc-connector-badge">
-                                        <span>&darr;</span> Detection Trigger (Alert Level 12)
+                                        <i class="uil uil-arrow-down text-xs"></i>
+                                        <span>Detection Trigger (Alert Level 12 &middot; High Severity)</span>
                                     </div>
                                 </div>
 
                                 <!-- Step 3: Alert Triage -->
-                                <div class="soc-flow-node text-center">
-                                    <div class="inline-flex items-center gap-2 mb-1">
-                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4 text-red" xmlns="http://www.w3.org/2000/svg"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
-                                        <strong class="text-white text-sm font-bold tracking-wide">Alert Triage &amp; Dynamic Splitting</strong>
+                                <div class="soc-flow-node">
+                                    <div class="soc-icon-box">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+                                        </svg>
                                     </div>
-                                    <p class="text-white/60 text-xs">Automated severity scoring, false positive filtering &amp; parallel verification dispatch</p>
+                                    <div class="soc-node-content">
+                                        <div class="flex items-center justify-between gap-2 mb-1">
+                                            <div class="soc-node-title" style="margin-bottom: 0;">
+                                                <span>ALERT TRIAGE</span>
+                                            </div>
+                                            <span class="rounded bg-yellow-500/20 text-yellow-400 px-2 py-0.5 text-[10px] font-mono font-bold border border-yellow-500/30">STREAM SPLITTING</span>
+                                        </div>
+                                        <p class="soc-node-desc">Automated severity scoring, false positive elimination, and instant dispatching into parallel threat intelligence &amp; network packet analysis streams.</p>
+                                    </div>
                                 </div>
 
                                 <!-- Connector: Triage to Parallel -->
                                 <div class="soc-connector">
                                     <div class="soc-connector-badge">
-                                        <span>&darr;</span> Parallel Correlation
+                                        <i class="uil uil-arrow-down text-xs"></i>
+                                        <span>Parallel Intelligence &amp; NIDS Verification</span>
                                     </div>
                                 </div>
 
                                 <!-- Step 4: Parallel Threat Intel & Snort -->
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <div class="soc-flow-node">
-                                        <div class="flex items-center gap-2 mb-1">
-                                            <div class="h-2 w-2 rounded-full bg-red"></div>
-                                            <strong class="text-white text-xs font-bold uppercase tracking-wider">Threat Intelligence</strong>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                                    <div class="soc-subnode">
+                                        <div class="flex items-center gap-3 mb-2.5">
+                                            <div class="soc-icon-box" style="width: 38px; height: 38px; min-width: 38px;">
+                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" style="width: 18px; height: 18px;" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Threat Intelligence</h4>
+                                                <span class="text-red font-mono text-[11px] font-bold block">VirusTotal &middot; AbuseIPDB</span>
+                                            </div>
                                         </div>
-                                        <span class="text-red font-mono text-[11px] font-bold block">VirusTotal &middot; AbuseIPDB</span>
-                                        <p class="text-white/50 text-[11px] mt-1 leading-relaxed">Automated IOC queries, malicious reputation scoring &amp; external feed correlation</p>
+                                        <p class="soc-node-desc" style="font-size: 0.78rem;">Automated IOC hash extraction, IP reputation score verification, and external threat feed correlation via REST APIs.</p>
                                     </div>
                                     
-                                    <div class="soc-flow-node">
-                                        <div class="flex items-center gap-2 mb-1">
-                                            <div class="h-2 w-2 rounded-full bg-red"></div>
-                                            <strong class="text-white text-xs font-bold uppercase tracking-wider">Network Detection</strong>
+                                    <div class="soc-subnode">
+                                        <div class="flex items-center gap-3 mb-2.5">
+                                            <div class="soc-icon-box" style="width: 38px; height: 38px; min-width: 38px;">
+                                                <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" style="width: 18px; height: 18px;" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg>
+                                            </div>
+                                            <div>
+                                                <h4 class="text-xs font-bold text-white uppercase tracking-wider">Network Detection</h4>
+                                                <span class="text-red font-mono text-[11px] font-bold block">Snort NIDS</span>
+                                            </div>
                                         </div>
-                                        <span class="text-red font-mono text-[11px] font-bold block">Snort NIDS</span>
-                                        <p class="text-white/50 text-[11px] mt-1 leading-relaxed">Deep packet inspection, signature matching &amp; suspicious C2 beaconing alerts</p>
+                                        <p class="soc-node-desc" style="font-size: 0.78rem;">Deep packet inspection, custom Snort signature rules, and real-time detection of suspicious C2 beaconing callbacks.</p>
                                     </div>
                                 </div>
 
                                 <!-- Connector: Parallel to Investigation -->
                                 <div class="soc-connector">
                                     <div class="soc-connector-badge">
-                                        <span>&darr;</span> Evidence Aggregation &amp; Investigation
+                                        <i class="uil uil-arrow-down text-xs"></i>
+                                        <span>Evidence Aggregation &amp; Investigation Escalation</span>
                                     </div>
                                 </div>
 
                                 <!-- Step 5: TheHive -->
-                                <div class="soc-flow-node flex items-center justify-between">
-                                    <div class="flex items-center gap-3.5">
-                                        <div class="rounded-xl bg-red/15 border border-red/30 p-2.5 text-red flex items-center justify-center">
-                                            <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                                        </div>
-                                        <div>
-                                            <div class="flex items-center gap-2">
-                                                <strong class="text-white text-sm font-bold tracking-wide">THEHIVE</strong>
-                                                <span class="rounded bg-red/20 px-2 py-0.5 text-[10px] font-mono text-red font-bold">CASE #104</span>
-                                            </div>
-                                            <p class="text-white/60 text-xs mt-0.5">Security incident management, observable tracking &amp; investigation escalation</p>
-                                        </div>
+                                <div class="soc-flow-node">
+                                    <div class="soc-icon-box">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        </svg>
                                     </div>
-                                    <span class="rounded bg-white/10 px-2.5 py-1 text-[10px] font-mono text-white/80 font-bold">Case Mgmt</span>
+                                    <div class="soc-node-content">
+                                        <div class="flex items-center justify-between gap-2 mb-1">
+                                            <div class="soc-node-title" style="margin-bottom: 0;">
+                                                <span>THEHIVE CASE MANAGEMENT</span>
+                                                <span class="rounded bg-red/20 border border-red/40 px-2 py-0.5 text-[10px] font-mono text-red font-bold">#104</span>
+                                            </div>
+                                            <span class="soc-tag" style="color: #60a5fa; border-color: rgba(96,165,250,0.4); background: rgba(96,165,250,0.1); font-weight: 700; padding: 0.15rem 0.55rem; font-size: 0.68rem;">Tier-2 Escalation</span>
+                                        </div>
+                                        <p class="soc-node-desc">Security incident case creation, observable artifact timeline tracking, multi-analyst collaboration, and forensic audit trail documentation.</p>
+                                    </div>
                                 </div>
 
                                 <!-- Connector: TheHive to IR -->
                                 <div class="soc-connector">
                                     <div class="soc-connector-badge">
-                                        <span>&darr;</span> Execute Containment Playbook
+                                        <i class="uil uil-arrow-down text-xs"></i>
+                                        <span>Execute Containment Playbook</span>
                                     </div>
                                 </div>
 
                                 <!-- Step 6: Incident Response -->
-                                <div class="rounded-xl border border-white/20 bg-gradient-to-r from-red/25 via-[#0e0202] to-red/15 p-4 text-center">
-                                    <div class="inline-flex items-center gap-2 mb-1">
-                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" class="h-4 w-4 text-red" xmlns="http://www.w3.org/2000/svg"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                                        <strong class="text-white text-sm font-bold uppercase tracking-wider">Incident Response &amp; Mitigation</strong>
+                                <div class="soc-flow-node" style="border-color: rgba(255, 30, 30, 0.45); background: linear-gradient(135deg, rgba(255, 30, 30, 0.14), rgba(18, 2, 2, 0.96)); box-shadow: 0 0 28px rgba(255,30,30,0.18);">
+                                    <div class="soc-icon-box" style="background: rgba(255, 30, 30, 0.22); border-color: #ff1e1e;">
+                                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                        </svg>
                                     </div>
-                                    <p class="text-white/70 text-xs mt-0.5">Host isolation &middot; Malicious process termination &middot; Network blocking &middot; Root cause analysis</p>
+                                    <div class="soc-node-content">
+                                        <div class="flex items-center justify-between gap-2 mb-1">
+                                            <div class="soc-node-title" style="margin-bottom: 0; color: #ff4d4d;">
+                                                <span>INCIDENT RESPONSE</span>
+                                            </div>
+                                            <span class="rounded bg-green-500/20 text-green-400 px-2 py-0.5 text-[10px] font-mono font-bold border border-green-500/30">CONTAINMENT ENGAGED</span>
+                                        </div>
+                                        <p class="soc-node-desc" style="color: rgba(255, 255, 255, 0.82);">Automated host network isolation &middot; Malicious process tree termination &middot; Perimeter firewall IP blocking &middot; Forensic root cause analysis.</p>
+                                    </div>
                                 </div>
 
                             </div>
@@ -543,94 +580,139 @@
                     <div class="space-y-4 reveal-right">
                         
                         <!-- Module Switchers -->
-                        <div class="space-y-2">
-                            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/40">Select Telemetry Layer</p>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button class="device-module-btn active flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-red bg-red/5 text-white" data-module="architecture">
-                                    <i class="uil uil-sitemap text-base text-red"></i>
-                                    <div>
-                                        <h4 class="text-xs font-bold text-white">Full Architecture</h4>
-                                        <p class="text-[10px] text-white/50">ASCII Schematic View</p>
+                        <div class="space-y-2.5">
+                            <div class="flex items-center justify-between px-1">
+                                <p class="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Select Telemetry Layer</p>
+                                <span class="font-mono text-[10px] text-red font-semibold flex items-center gap-1.5">
+                                    <span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span>
+                                    INTERACTIVE CONSOLE
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                <button class="device-module-btn active" data-module="architecture">
+                                    <div class="btn-icon-wrap">
+                                        <i class="uil uil-sitemap"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-1">
+                                            <h4 class="text-xs font-bold text-white tracking-wide">Full Architecture</h4>
+                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/10 text-white/70">ASCII</span>
+                                        </div>
+                                        <p class="text-[11px] text-white/50 mt-0.5">End-to-End Pipeline Schematic</p>
                                     </div>
                                 </button>
-                                <button class="device-module-btn flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="sysmon">
-                                    <i class="uil uil-desktop text-base text-white/70"></i>
-                                    <div>
-                                        <h4 class="text-xs font-bold text-white">Sysmon Endpoint</h4>
-                                        <p class="text-[10px] text-white/50">Event ID 1 Telemetry</p>
+                                <button class="device-module-btn" data-module="sysmon">
+                                    <div class="btn-icon-wrap">
+                                        <i class="uil uil-desktop"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-1">
+                                            <h4 class="text-xs font-bold text-white tracking-wide">Sysmon Endpoint</h4>
+                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-blue-500/20 text-blue-400">EID 1</span>
+                                        </div>
+                                        <p class="text-[11px] text-white/50 mt-0.5">Kernel Process Telemetry</p>
                                     </div>
                                 </button>
-                                <button class="device-module-btn flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="wazuh">
-                                    <i class="uil uil-shield-check text-base text-white/70"></i>
-                                    <div>
-                                        <h4 class="text-xs font-bold text-white">Wazuh SIEM Rule</h4>
-                                        <p class="text-[10px] text-white/50">Alert Level 12 Trigger</p>
+                                <button class="device-module-btn" data-module="wazuh">
+                                    <div class="btn-icon-wrap">
+                                        <i class="uil uil-shield-check"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-1">
+                                            <h4 class="text-xs font-bold text-white tracking-wide">Wazuh SIEM Rule</h4>
+                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-red/20 text-red font-bold">LVL 12</span>
+                                        </div>
+                                        <p class="text-[11px] text-white/50 mt-0.5">Detection &amp; Correlation Trigger</p>
                                     </div>
                                 </button>
-                                <button class="device-module-btn flex items-center gap-2.5 rounded-lg border p-3 text-left transition-all border-white/10 bg-white/[0.02] text-white/60 hover:border-white/20 hover:bg-white/[0.04]" data-module="thehive">
-                                    <i class="uil uil-bell text-base text-white/70"></i>
-                                    <div>
-                                        <h4 class="text-xs font-bold text-white">TheHive Incident</h4>
-                                        <p class="text-[10px] text-white/50">Case Escalation &amp; IR</p>
+                                <button class="device-module-btn" data-module="thehive">
+                                    <div class="btn-icon-wrap">
+                                        <i class="uil uil-bell"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center justify-between gap-1">
+                                            <h4 class="text-xs font-bold text-white tracking-wide">TheHive Incident</h4>
+                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-purple-500/20 text-purple-400">CASE #104</span>
+                                        </div>
+                                        <p class="text-[11px] text-white/50 mt-0.5">Case Escalation &amp; Playbook</p>
                                     </div>
                                 </button>
                             </div>
                         </div>
 
                         <!-- Terminal Display -->
-                        <div class="relative w-full border border-white/12 bg-[#0a0a0a] rounded-[24px] p-5 shadow-2xl flex flex-col justify-between min-h-[490px]">
-                            <div class="flex items-center justify-between pb-3 border-b border-white/8 text-[9px] uppercase tracking-wider text-white/40 font-mono">
-                                <span class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span> SOC_DETECTION_ENGINE</span>
-                                <span class="flex items-center gap-2">HOST: WIN-SOC-LAB</span>
-                                <span class="text-red">ACTIVE MONITORING</span>
+                        <div class="soc-term-container">
+                            <div class="flex items-center justify-between pb-3 border-b border-white/10 text-[10px] uppercase tracking-wider text-white/50 font-mono">
+                                <div class="flex items-center gap-2">
+                                    <div class="flex items-center gap-1.5 mr-2">
+                                        <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f56]"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]"></span>
+                                        <span class="h-2.5 w-2.5 rounded-full bg-[#27c93f]"></span>
+                                    </div>
+                                    <span class="flex items-center gap-1.5"><span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse"></span> SOC_DETECTION_ENGINE</span>
+                                </div>
+                                <span class="hidden sm:inline-flex items-center gap-2 text-white/40">HOST: WIN-SOC-LAB</span>
+                                <span class="text-red font-bold">ACTIVE MONITORING</span>
                             </div>
                             
-                            <div class="relative my-3 flex-1 rounded-[14px] bg-[#020302] border border-white/10 p-4 font-mono text-[10px] overflow-hidden flex flex-col justify-between min-h-[380px] shadow-[inset_0_0_24px_rgba(0,0,0,0.95)]">
+                            <div class="soc-term-screen my-3">
                                 <div class="absolute inset-0 bg-scanlines pointer-events-none opacity-15"></div>
                                 <div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[size:100%_3px,3px_100%] pointer-events-none opacity-20"></div>
                                 
-                                <div class="flex items-center justify-between text-red font-bold text-xs pb-1.5 border-b border-red/10">
-                                    <span class="uppercase tracking-widest flex items-center gap-1" id="terminal-heading">Full Architecture Schematic</span>
-                                    <span class="text-[10px] font-semibold text-white/60">ONLINE</span>
+                                <div class="flex items-center justify-between text-red font-bold text-xs pb-2 border-b border-red/20 mb-2 relative z-10">
+                                    <span class="uppercase tracking-widest flex items-center gap-2" id="terminal-heading">Full Architecture Schematic</span>
+                                    <span class="text-[10px] font-mono font-semibold text-green-400 bg-green-500/10 px-2 py-0.5 rounded border border-green-500/20">STATUS: ONLINE</span>
                                 </div>
                                 
-                                <div class="relative flex-1 my-2 rounded bg-black/50 border border-white/5 p-3 overflow-x-auto flex flex-col justify-start text-[9px] md:text-[10px] leading-relaxed font-mono" id="terminal-screen">
-                                    <pre class="text-white/85 font-mono text-[9px] md:text-[10px] leading-tight select-none whitespace-pre">
-                 WINDOWS ENDPOINT
-                       │
-                    Sysmon
-                       │
-                       ▼
-                 ┌───────────┐
-                 │   Wazuh   │
-                 │    SIEM   │
-                 └─────┬─────┘
-                       │
-                  Detection
-                       │
-                       ▼
-                  Alert Triage
-                       │
-          ┌────────────┴────────────┐
-          ▼                         ▼
-   Threat Intelligence         Snort
-   VirusTotal / AbuseIPDB      Network Detection
-          │                         │
-          └────────────┬────────────┘
-                       ▼
-                   Investigation
-                       │
-                       ▼
-                    TheHive
-                       │
-                       ▼
-               Incident Response</pre>
+                                <div class="soc-ascii-wrapper relative z-10 text-[9px] md:text-[10px] leading-relaxed font-mono" id="terminal-screen">
+                                    <pre class="soc-ascii-art">
+                 <span style="color:#38bdf8;font-weight:bold;">┌───────────────────────────┐</span>
+                 <span style="color:#38bdf8;font-weight:bold;">│     WINDOWS ENDPOINT      │</span>
+                 <span style="color:#38bdf8;font-weight:bold;">└─────────────┬─────────────┘</span>
+                               <span style="color:#38bdf8;">│</span>
+                     <span style="color:#fbbf24;font-weight:600;">[ Sysmon Agent ]</span>
+                               <span style="color:#38bdf8;">│</span>
+                               <span style="color:#38bdf8;">▼</span>
+                 <span style="color:#ff1e1e;font-weight:bold;">╔═══════════════════════════╗</span>
+                 <span style="color:#ff1e1e;font-weight:bold;">║        WAZUH SIEM         ║</span>
+                 <span style="color:#ff1e1e;font-weight:bold;">╚═════════════╤═════════════╝</span>
+                               <span style="color:#ff1e1e;">│</span>
+                   <span style="color:#ff4d4d;font-weight:600;">[ Detection Trigger ]</span>
+                               <span style="color:#ff1e1e;">│</span>
+                               <span style="color:#ff1e1e;">▼</span>
+                 <span style="color:#fbbf24;font-weight:bold;">┌───────────────────────────┐</span>
+                 <span style="color:#fbbf24;font-weight:bold;">│       ALERT TRIAGE        │</span>
+                 <span style="color:#fbbf24;font-weight:bold;">└─────────────┬─────────────┘</span>
+                               <span style="color:#fbbf24;">│</span>
+              <span style="color:rgba(255,255,255,0.45);">┌────────────────┴────────────────┐</span>
+              <span style="color:rgba(255,255,255,0.45);">│                                 │</span>
+              <span style="color:rgba(255,255,255,0.45);">▼                                 ▼</span>
+  <span style="color:#fb923c;font-weight:bold;">┌───────────────────────┐</span>         <span style="color:#60a5fa;font-weight:bold;">┌───────────────────────┐</span>
+  <span style="color:#fb923c;font-weight:bold;">│  THREAT INTELLIGENCE  │</span>         <span style="color:#60a5fa;font-weight:bold;">│      SNORT NIDS       │</span>
+  <span style="color:#fb923c;">│ VirusTotal / AbuseIPDB│</span>         <span style="color:#60a5fa;">│   Network Detection   │</span>
+  <span style="color:#fb923c;font-weight:bold;">└───────────┬───────────┘</span>         <span style="color:#60a5fa;font-weight:bold;">└───────────┬───────────┘</span>
+              <span style="color:rgba(255,255,255,0.45);">│                                 │</span>
+              <span style="color:rgba(255,255,255,0.45);">└────────────────┬────────────────┘</span>
+                               <span style="color:rgba(255,255,255,0.45);">│</span>
+                    <span style="color:#c084fc;font-weight:600;">[ Evidence Triage ]</span>
+                               <span style="color:#c084fc;">│</span>
+                               <span style="color:#c084fc;">▼</span>
+                 <span style="color:#c084fc;font-weight:bold;">┌───────────────────────────┐</span>
+                 <span style="color:#c084fc;font-weight:bold;">│          THEHIVE          │</span>
+                 <span style="color:#c084fc;font-weight:bold;">└─────────────┬─────────────┘</span>
+                               <span style="color:#c084fc;">│</span>
+                    <span style="color:#4ade80;font-weight:600;">[ Automated SOAR ]</span>
+                               <span style="color:#4ade80;">│</span>
+                               <span style="color:#4ade80;">▼</span>
+                 <span style="color:#4ade80;font-weight:bold;">╔═══════════════════════════╗</span>
+                 <span style="color:#4ade80;font-weight:bold;">║     INCIDENT RESPONSE     ║</span>
+                 <span style="color:#4ade80;font-weight:bold;">╚═══════════════════════════╝</span></pre>
                                 </div>
                             </div>
                             
-                            <div class="flex items-center justify-between mt-1 px-1 text-[10px] font-mono text-white/40">
-                                <span>STATUS: ACTIVE DEFENSE</span>
-                                <span class="text-red">INTEGRITY 100%</span>
+                            <div class="flex items-center justify-between mt-1 px-1 text-[10px] font-mono text-white/50">
+                                <span>STATUS: ACTIVE DEFENSE ENGINE</span>
+                                <span class="text-red font-semibold">SECURITY INTEGRITY: 100%</span>
                             </div>
                         </div>
 

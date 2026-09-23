@@ -28,55 +28,303 @@ body {
 
 /* SOC Lab Flowchart Architecture */
 .soc-flow-node {
-  background: linear-gradient(135deg, rgba(255, 30, 30, 0.04), rgba(255, 255, 255, 0.02));
+  background: linear-gradient(135deg, rgba(255, 30, 30, 0.05), rgba(255, 255, 255, 0.02));
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
-  padding: 0.9rem 1.15rem;
+  padding: 1.15rem 1.4rem;
   transition: all 0.25s ease;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
 }
 .soc-flow-node:hover {
-  border-color: rgba(255, 30, 30, 0.45);
-  background: linear-gradient(135deg, rgba(255, 30, 30, 0.09), rgba(255, 255, 255, 0.04));
+  border-color: rgba(255, 30, 30, 0.5);
+  background: linear-gradient(135deg, rgba(255, 30, 30, 0.1), rgba(255, 255, 255, 0.04));
   transform: translateY(-2px);
   box-shadow: 0 10px 24px -6px rgba(255, 30, 30, 0.2);
 }
+.soc-icon-box {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  max-width: 44px !important;
+  border-radius: 12px;
+  background: rgba(255, 30, 30, 0.14);
+  border: 1px solid rgba(255, 30, 30, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff1e1e;
+  flex-shrink: 0;
+}
+.soc-icon-box svg {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  max-width: 22px !important;
+  display: block;
+}
+.soc-node-content {
+  flex: 1;
+  min-width: 0;
+}
+.soc-node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+  letter-spacing: 0.03em;
+}
+.soc-node-desc {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.6;
+  margin: 0;
+}
 .soc-hub-card {
-  background: linear-gradient(135deg, rgba(255, 30, 30, 0.16), rgba(10, 10, 10, 0.95));
-  border: 1.5px solid rgba(255, 30, 30, 0.55);
+  background: linear-gradient(135deg, rgba(255, 30, 30, 0.18), rgba(12, 1, 1, 0.96));
+  border: 1.5px solid rgba(255, 30, 30, 0.6);
   border-radius: 16px;
-  padding: 1.15rem 1.4rem;
-  box-shadow: 0 0 28px rgba(255, 30, 30, 0.16);
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 0 35px rgba(255, 30, 30, 0.2);
   position: relative;
+  text-align: center;
   transition: all 0.25s ease;
 }
 .soc-hub-card:hover {
   border-color: #ff1e1e;
-  box-shadow: 0 0 38px rgba(255, 30, 30, 0.3);
+  box-shadow: 0 0 45px rgba(255, 30, 30, 0.35);
   transform: translateY(-2px);
+}
+.soc-hub-title {
+  font-size: 1.6rem;
+  font-family: var(--font-bebas);
+  letter-spacing: 0.08em;
+  color: #ff1e1e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
+}
+.soc-hub-desc {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.85rem;
+  letter-spacing: 0.01em;
+}
+.soc-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+}
+.soc-tag {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: inline-flex;
+  align-items: center;
 }
 .soc-connector {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0.35rem 0;
+  margin: 0.75rem 0;
   position: relative;
 }
 .soc-connector-badge {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  background: #000;
-  border: 1px solid rgba(255, 30, 30, 0.4);
-  color: #ff5555;
+  gap: 7px;
+  background: #090101;
+  border: 1px solid rgba(255, 30, 30, 0.45);
+  color: #ff4d4d;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 2px 10px;
+  padding: 5px 16px;
   border-radius: 99px;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  box-shadow: 0 0 14px rgba(255, 30, 30, 0.18);
+}
+.soc-subnode {
+  background: linear-gradient(135deg, rgba(255, 30, 30, 0.05), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  transition: all 0.25s ease;
+}
+.soc-subnode:hover {
+  border-color: rgba(255, 30, 30, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -6px rgba(255, 30, 30, 0.2);
+}
+
+/* Telemetry Switcher Module Buttons */
+.device-module-btn {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.9rem !important;
+  padding: 0.85rem 1.1rem !important;
+  border-radius: 12px !important;
+  text-align: left !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  transition: all 0.25s ease !important;
+  cursor: pointer;
+  width: 100%;
+}
+.device-module-btn:hover {
+  border-color: rgba(255, 30, 30, 0.45) !important;
+  background: rgba(255, 30, 30, 0.05) !important;
+  transform: translateY(-1px);
+}
+.device-module-btn.active {
+  border-color: #ff1e1e !important;
+  background: rgba(255, 30, 30, 0.1) !important;
+  box-shadow: 0 0 20px rgba(255, 30, 30, 0.22) !important;
+}
+.btn-icon-wrap {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s ease;
+  font-size: 1.25rem;
+}
+.device-module-btn:hover .btn-icon-wrap,
+.device-module-btn.active .btn-icon-wrap {
+  background: rgba(255, 30, 30, 0.2);
+  border-color: rgba(255, 30, 30, 0.4);
+  color: #ff1e1e;
+}
+
+/* SOC Lab Main Grid */
+.soc-main-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .soc-main-grid {
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 2.25rem;
+  }
+}
+
+/* SOC Terminal and ASCII Schematic */
+.soc-term-container {
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #090909;
+  padding: 1.25rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.soc-term-screen {
+  background: #030403;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.15rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.95);
+}
+.soc-ascii-wrapper {
+  flex: 1;
+  overflow-x: auto;
+  padding: 0.5rem 0.25rem;
+  display: flex;
+  justify-content: center;
+}
+.soc-ascii-art {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  white-space: pre;
+  user-select: none;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .soc-ascii-art {
+    font-size: 0.58rem;
+    line-height: 1.25;
+  }
+}
+.soc-log-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+}
+.soc-log-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.72rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.soc-log-badge {
+  font-weight: 700;
+  padding: 0.2rem 0.65rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  font-family: var(--font-mono);
+}
+.soc-log-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  line-height: 1.6;
+}
+.soc-log-row {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+}
+.soc-log-key {
+  color: rgba(255, 255, 255, 0.45);
+  min-width: 140px;
+  flex-shrink: 0;
+}
+.soc-log-val {
+  word-break: break-all;
+}
+.soc-log-alert {
+  font-size: 0.76rem;
+  font-weight: 600;
+  font-family: var(--font-mono);
 }
 
 .console-card {

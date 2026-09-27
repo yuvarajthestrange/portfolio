@@ -332,3 +332,37 @@ if (revealElements.length > 0) {
         revealOnScroll();
     }
 }
+
+// Evidence Lightbox Modal Controls
+window.openEvidenceModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closeEvidenceModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+};
+
+// Global escape key and outside click handling for evidence modals
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.evidence-modal.active').forEach(modal => {
+            modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+    }
+});
+
+document.addEventListener('click', (e) => {
+    if (e.target.classList && e.target.classList.contains('evidence-modal')) {
+        e.target.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+});

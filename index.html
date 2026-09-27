@@ -31,6 +31,7 @@
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#projects" class="nav-link">Projects</a>
                     <a href="#playbooks" class="nav-link">Playbooks</a>
+                    <a href="#evidence" class="nav-link">Evidence</a>
                     <a href="#community" class="nav-link">Leadership</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
@@ -1104,6 +1105,208 @@
             </div>
         </section>
 
+        <!-- Security Lab Evidence Section -->
+        <section id="evidence" class="hyper-section evidence-section section-pad border-b border-white/10 bg-black text-white relative">
+            <div class="mx-auto max-w-[1180px] px-5 md:px-10">
+                <div class="mb-14 reveal">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
+                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red">ARTIFACT REPOSITORY // UNCLASSIFIED TELEMETRY</p>
+                    </div>
+                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase">Security Lab Evidence</h2>
+                    <p class="mt-4 max-w-2xl text-base text-white/60">Forensic captures, telemetry feeds, and alert logs captured directly from the live SOC virtual testbed environment.</p>
+                </div>
+
+                <div class="evidence-grid">
+                    <!-- Card 1: Wazuh SIEM Dashboard -->
+                    <div class="evidence-card reveal" onclick="openEvidenceModal('modal-wazuh')">
+                        <div class="evidence-card-header">
+                            <span class="evidence-card-category">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                                SIEM / MONITORING
+                            </span>
+                            <span class="evidence-card-tag">DOC-WZ-8841</span>
+                        </div>
+                        <div class="evidence-thumbnail-wrap">
+                            <img src="/evidence/wazuh-dashboard.jpg" alt="Wazuh SIEM Security Events Dashboard" class="evidence-thumbnail" loading="lazy">
+                            <div class="evidence-card-overlay"></div>
+                        </div>
+                        <div class="evidence-card-body">
+                            <div class="evidence-tool-badges">
+                                <span class="evidence-tool-badge">Wazuh Manager 4.7</span>
+                                <span class="evidence-tool-badge">Elasticsearch</span>
+                                <span class="evidence-tool-badge">MITRE ATT&amp;CK</span>
+                            </div>
+                            <h3 class="evidence-card-title">Wazuh SIEM Live Telemetry &amp; Detection Dashboard</h3>
+                            <p class="evidence-card-desc">Centralized SIEM monitoring cluster ingesting agent logs, tracking 78k+ events, automated MITRE heatmap mapping, and real-time level 12+ critical alert triage.</p>
+                        </div>
+                        <div class="evidence-card-footer">
+                            <span class="text-xs font-mono text-white/40">78,412 LOGS INGESTED</span>
+                            <span class="evidence-view-btn">
+                                INSPECT EVIDENCE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Sysmon Process Creation Telemetry -->
+                    <div class="evidence-card reveal" onclick="openEvidenceModal('modal-sysmon')">
+                        <div class="evidence-card-header">
+                            <span class="evidence-card-category">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+                                ENDPOINT TELEMETRY
+                            </span>
+                            <span class="evidence-card-tag">EID-01-SYSMON</span>
+                        </div>
+                        <div class="evidence-thumbnail-wrap">
+                            <img src="/evidence/sysmon-telemetry.jpg" alt="Sysmon Event ID 1 Process Create Telemetry" class="evidence-thumbnail" loading="lazy">
+                            <div class="evidence-card-overlay"></div>
+                        </div>
+                        <div class="evidence-card-body">
+                            <div class="evidence-tool-badges">
+                                <span class="evidence-tool-badge">Sysmon v15</span>
+                                <span class="evidence-tool-badge">Windows Event Log</span>
+                                <span class="evidence-tool-badge">T1059.001</span>
+                            </div>
+                            <h3 class="evidence-card-title">Sysmon Process Telemetry &amp; Base64 De-obfuscation</h3>
+                            <p class="evidence-card-desc">Sysmon Event ID 1 capture exposing malicious PowerShell execution with -EncodedCommand, parent-child process tree analysis, and cryptographic hash verification.</p>
+                        </div>
+                        <div class="evidence-card-footer">
+                            <span class="text-xs font-mono text-white/40">SHA256 VERIFIED</span>
+                            <span class="evidence-view-btn">
+                                INSPECT EVIDENCE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Wireshark C2 Beacon Packet Inspection -->
+                    <div class="evidence-card reveal" onclick="openEvidenceModal('modal-wireshark')">
+                        <div class="evidence-card-header">
+                            <span class="evidence-card-category">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                                NETWORK FORENSICS
+                            </span>
+                            <span class="evidence-card-tag">PCAP-SNORT-402</span>
+                        </div>
+                        <div class="evidence-thumbnail-wrap">
+                            <img src="/evidence/wireshark-snort.jpg" alt="Wireshark PCAP C2 Beacon Stream Analysis" class="evidence-thumbnail" loading="lazy">
+                            <div class="evidence-card-overlay"></div>
+                        </div>
+                        <div class="evidence-card-body">
+                            <div class="evidence-tool-badges">
+                                <span class="evidence-tool-badge">Wireshark</span>
+                                <span class="evidence-tool-badge">Snort NIDS</span>
+                                <span class="evidence-tool-badge">TCP Stream</span>
+                            </div>
+                            <h3 class="evidence-card-title">Network PCAP Deep Packet &amp; C2 Beacon Inspection</h3>
+                            <p class="evidence-card-desc">Wireshark stream reassembly showing periodic HTTP beaconing to attacker infrastructure, Snort signature triggers, user-agent anomalies, and exfiltration artifacts.</p>
+                        </div>
+                        <div class="evidence-card-footer">
+                            <span class="text-xs font-mono text-white/40">PORT 443 / 8080 C2</span>
+                            <span class="evidence-view-btn">
+                                INSPECT EVIDENCE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Threat Intelligence & VirusTotal Correlation -->
+                    <div class="evidence-card reveal" onclick="openEvidenceModal('modal-virustotal')">
+                        <div class="evidence-card-header">
+                            <span class="evidence-card-category">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                THREAT INTEL
+                            </span>
+                            <span class="evidence-card-tag">INTEL-VT-58</span>
+                        </div>
+                        <div class="evidence-thumbnail-wrap">
+                            <img src="/evidence/virustotal-intel.jpg" alt="VirusTotal and Threat Intelligence Correlation" class="evidence-thumbnail" loading="lazy">
+                            <div class="evidence-card-overlay"></div>
+                        </div>
+                        <div class="evidence-card-body">
+                            <div class="evidence-tool-badges">
+                                <span class="evidence-tool-badge">VirusTotal API</span>
+                                <span class="evidence-tool-badge">AbuseIPDB</span>
+                                <span class="evidence-tool-badge">Cobalt Strike</span>
+                            </div>
+                            <h3 class="evidence-card-title">Automated Threat Intel &amp; Reputation Enrichment</h3>
+                            <p class="evidence-card-desc">Multi-engine antivirus consensus (58/72 detections) confirming Trojan/CobaltStrike loader, integrated with AbuseIPDB IP reputation score (100% malicious).</p>
+                        </div>
+                        <div class="evidence-card-footer">
+                            <span class="text-xs font-mono text-white/40">58/72 DETECTIONS</span>
+                            <span class="evidence-view-btn">
+                                INSPECT EVIDENCE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: TheHive Incident Response Case File -->
+                    <div class="evidence-card reveal" onclick="openEvidenceModal('modal-thehive')">
+                        <div class="evidence-card-header">
+                            <span class="evidence-card-category">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                                CASE MANAGEMENT
+                            </span>
+                            <span class="evidence-card-tag">CASE-TH-105</span>
+                        </div>
+                        <div class="evidence-thumbnail-wrap">
+                            <img src="/evidence/thehive-incident.jpg" alt="TheHive 5 Incident Case Management Platform" class="evidence-thumbnail" loading="lazy">
+                            <div class="evidence-card-overlay"></div>
+                        </div>
+                        <div class="evidence-card-body">
+                            <div class="evidence-tool-badges">
+                                <span class="evidence-tool-badge">TheHive 5</span>
+                                <span class="evidence-tool-badge">Cortex Analyzers</span>
+                                <span class="evidence-tool-badge">Observable Hub</span>
+                            </div>
+                            <h3 class="evidence-card-title">TheHive SOC Incident Management &amp; Observables</h3>
+                            <p class="evidence-card-desc">Formalized incident dossier tracking attack stages, linking 14 IOC observables, MITRE ATT&amp;CK matrix tactics, task execution status, and audit compliance logging.</p>
+                        </div>
+                        <div class="evidence-card-footer">
+                            <span class="text-xs font-mono text-white/40">CASE #105 ASSIGNED</span>
+                            <span class="evidence-view-btn">
+                                INSPECT EVIDENCE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Automated Active Response & Host Quarantine -->
+                    <div class="evidence-card reveal" onclick="openEvidenceModal('modal-active-response')">
+                        <div class="evidence-card-header">
+                            <span class="evidence-card-category">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+                                ACTIVE DEFENSE
+                            </span>
+                            <span class="evidence-card-tag">ACT-RESP-04</span>
+                        </div>
+                        <div class="evidence-thumbnail-wrap">
+                            <img src="/evidence/active-response.jpg" alt="Wazuh Automated Active Response and Isolation" class="evidence-thumbnail" loading="lazy">
+                            <div class="evidence-card-overlay"></div>
+                        </div>
+                        <div class="evidence-card-body">
+                            <div class="evidence-tool-badges">
+                                <span class="evidence-tool-badge">Active Response</span>
+                                <span class="evidence-tool-badge">iptables / netsh</span>
+                                <span class="evidence-tool-badge">Host Isolation</span>
+                            </div>
+                            <h3 class="evidence-card-title">Wazuh Active Response Host Isolation &amp; Drop Rules</h3>
+                            <p class="evidence-card-desc">Zero-touch automated containment script triggered within 800ms of rule 100201 match: flushing ingress/egress routes, dropping lateral ports, and locking victim endpoint.</p>
+                        </div>
+                        <div class="evidence-card-footer">
+                            <span class="text-xs font-mono text-white/40">CONTAINMENT &lt; 1 SEC</span>
+                            <span class="evidence-view-btn">
+                                INSPECT EVIDENCE
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Community Section -->
         <section id="community" class="hyper-section section-pad bg-white text-black">
             <div class="mx-auto grid max-w-[1180px] items-center gap-12 px-5 md:px-10 lg:grid-cols-[1fr_0.8fr]">
@@ -1300,6 +1503,167 @@
             </footer>
         </section>
     </main>
+
+    <!-- Lightbox Modals for Evidence Section -->
+    <!-- Modal 1: Wazuh SIEM -->
+    <div id="modal-wazuh" class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modal-wazuh-title">
+        <div class="evidence-modal-content">
+            <div class="evidence-modal-topbar">
+                <span class="evidence-modal-title" id="modal-wazuh-title">TELEMETRY ARCHIVE // DOC-WZ-8841 // WAZUH DASHBOARD</span>
+                <button class="evidence-modal-close" onclick="closeEvidenceModal('modal-wazuh')">[ X ] ESC</button>
+            </div>
+            <div class="evidence-modal-body">
+                <div class="evidence-modal-image-wrap">
+                    <img src="/evidence/wazuh-dashboard.jpg" alt="Wazuh SIEM Dashboard Full Resolution Screenshot" class="evidence-modal-image">
+                </div>
+                <div class="evidence-modal-details">
+                    <h4 class="evidence-modal-heading">Wazuh SIEM Central Monitoring &amp; Alert Telemetry Analysis</h4>
+                    <div class="evidence-modal-meta-row">
+                        <span class="evidence-modal-badge bg-red/20 text-red border border-red/30">SEV 4 // CRITICAL</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">AGENT 004 (WIN-PROD-SRV)</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">RULE ID: 100201</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">MITRE ATT&amp;CK T1059.001</span>
+                    </div>
+                    <p class="evidence-modal-text">
+                        <strong>Lab Analysis Context:</strong> The Wazuh SIEM control plane ingests real-time endpoint events from Windows agents, Linux servers, and network taps. The visualization displays total logged events (78,412), a breakdown of security events by rule classification level, and an automated MITRE ATT&amp;CK matrix mapping. When high-severity alerts (level 12+) trigger from process injection or unauthorized admin credential dumps, the console dynamically highlights affected subnets, launches automated active-response scripts, and dispatches incident tickets to TheHive.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Sysmon Telemetry -->
+    <div id="modal-sysmon" class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modal-sysmon-title">
+        <div class="evidence-modal-content">
+            <div class="evidence-modal-topbar">
+                <span class="evidence-modal-title" id="modal-sysmon-title">TELEMETRY ARCHIVE // EID-01-SYSMON // PROCESS CREATE</span>
+                <button class="evidence-modal-close" onclick="closeEvidenceModal('modal-sysmon')">[ X ] ESC</button>
+            </div>
+            <div class="evidence-modal-body">
+                <div class="evidence-modal-image-wrap">
+                    <img src="/evidence/sysmon-telemetry.jpg" alt="Sysmon Event ID 1 Telemetry Full Resolution Screenshot" class="evidence-modal-image">
+                </div>
+                <div class="evidence-modal-details">
+                    <h4 class="evidence-modal-heading">Sysmon Event ID 1: Encoded PowerShell Command Execution</h4>
+                    <div class="evidence-modal-meta-row">
+                        <span class="evidence-modal-badge bg-red/20 text-red border border-red/30">SEV 3 // HIGH</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">PARENT: WINWORD.EXE</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">CHILD: POWERSHELL.EXE</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">INTEGRITY: HIGH</span>
+                    </div>
+                    <p class="evidence-modal-text">
+                        <strong>Lab Analysis Context:</strong> Sysmon XML event capture demonstrating execution of obfuscated command-line payloads. The telemetry reveals Microsoft Word spawning an unquoted PowerShell process with arguments <code>-NoP -NonI -W Hidden -Exec Bypass -EncodedCommand</code>. The SHA-256 process hash was automatically extracted and cross-referenced with internal golden image baselines, revealing unauthorized process creation and leading to automated process termination via endpoint agent.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Wireshark / Snort -->
+    <div id="modal-wireshark" class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modal-wireshark-title">
+        <div class="evidence-modal-content">
+            <div class="evidence-modal-topbar">
+                <span class="evidence-modal-title" id="modal-wireshark-title">TELEMETRY ARCHIVE // PCAP-SNORT-402 // C2 BEACON</span>
+                <button class="evidence-modal-close" onclick="closeEvidenceModal('modal-wireshark')">[ X ] ESC</button>
+            </div>
+            <div class="evidence-modal-body">
+                <div class="evidence-modal-image-wrap">
+                    <img src="/evidence/wireshark-snort.jpg" alt="Wireshark PCAP C2 Stream Full Resolution Screenshot" class="evidence-modal-image">
+                </div>
+                <div class="evidence-modal-details">
+                    <h4 class="evidence-modal-heading">Wireshark Deep Packet Inspection: Cobalt Strike C2 HTTP Beacon</h4>
+                    <div class="evidence-modal-meta-row">
+                        <span class="evidence-modal-badge bg-red/20 text-red border border-red/30">SEV 4 // CRITICAL</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">SRC: 192.168.1.105</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">DST: 185.220.101.5:8080</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">PROTO: TCP / HTTP</span>
+                    </div>
+                    <p class="evidence-modal-text">
+                        <strong>Lab Analysis Context:</strong> Network packet analysis of an established egress beaconing channel. Snort NIDS flagged rule SID 2024881 ("ET MALWARE Cobalt Strike Beaconing Detected"). In Wireshark, the TCP stream was reconstructed, showing consistent jittered GET requests to <code>/submit.php?id=...</code> with base64 encoded cookies carrying compromised system metadata. The IP was confirmed as a known bulletproof host and sinkholed on perimeter firewalls.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 4: VirusTotal & Threat Intel -->
+    <div id="modal-virustotal" class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modal-virustotal-title">
+        <div class="evidence-modal-content">
+            <div class="evidence-modal-topbar">
+                <span class="evidence-modal-title" id="modal-virustotal-title">TELEMETRY ARCHIVE // INTEL-VT-58 // MALWARE CORRELATION</span>
+                <button class="evidence-modal-close" onclick="closeEvidenceModal('modal-virustotal')">[ X ] ESC</button>
+            </div>
+            <div class="evidence-modal-body">
+                <div class="evidence-modal-image-wrap">
+                    <img src="/evidence/virustotal-intel.jpg" alt="VirusTotal Threat Intelligence Full Resolution Screenshot" class="evidence-modal-image">
+                </div>
+                <div class="evidence-modal-details">
+                    <h4 class="evidence-modal-heading">Multi-Engine Threat Intelligence &amp; AbuseIPDB Correlation</h4>
+                    <div class="evidence-modal-meta-row">
+                        <span class="evidence-modal-badge bg-red/20 text-red border border-red/30">DETECTION: 58/72 AV</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">ABUSEIPDB: 100% SCORE</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">FAMILY: WIN32.COBALTSTRIKE</span>
+                    </div>
+                    <p class="evidence-modal-text">
+                        <strong>Lab Analysis Context:</strong> Python automation scripts integrated into the pipeline query VirusTotal API v3 and AbuseIPDB upon any new file drop or outbound connection. The artifact screenshot highlights 58 out of 72 security vendors classifying the binary as a malicious Cobalt Strike stager. Sandbox behavior graphs detailed DLL injection into <code>explorer.exe</code>, persistence registry keys under <code>HKCU\Software\Microsoft\Windows\CurrentVersion\Run</code>, and hardcoded C2 fallback addresses.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 5: TheHive Incident Response Case -->
+    <div id="modal-thehive" class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modal-thehive-title">
+        <div class="evidence-modal-content">
+            <div class="evidence-modal-topbar">
+                <span class="evidence-modal-title" id="modal-thehive-title">TELEMETRY ARCHIVE // CASE-TH-105 // INCIDENT DOSSIER</span>
+                <button class="evidence-modal-close" onclick="closeEvidenceModal('modal-thehive')">[ X ] ESC</button>
+            </div>
+            <div class="evidence-modal-body">
+                <div class="evidence-modal-image-wrap">
+                    <img src="/evidence/thehive-incident.jpg" alt="TheHive Case Management Full Resolution Screenshot" class="evidence-modal-image">
+                </div>
+                <div class="evidence-modal-details">
+                    <h4 class="evidence-modal-heading">TheHive 5 SOC Case Management &amp; Observables Tracking</h4>
+                    <div class="evidence-modal-meta-row">
+                        <span class="evidence-modal-badge bg-red/20 text-red border border-red/30">STATUS: IN PROGRESS</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">CASE ID: #105</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">14 OBSERVABLES</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">TLP: AMBER+STRICT</span>
+                    </div>
+                    <p class="evidence-modal-text">
+                        <strong>Lab Analysis Context:</strong> Case management lifecycle following standard NIST SP 800-61 incident response guidelines. The dashboard captures incident triage tasks: IOC extraction, Cortex analyzer enrichment, lateral movement validation, and eradication tasks. All 14 extracted observables (SHA256, domain names, C2 IPs) are classified with TLP markers and tagged with MITRE ATT&amp;CK technique IDs for threat sharing and post-mortem reporting.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 6: Wazuh Active Response Isolation -->
+    <div id="modal-active-response" class="evidence-modal" role="dialog" aria-modal="true" aria-labelledby="modal-active-response-title">
+        <div class="evidence-modal-content">
+            <div class="evidence-modal-topbar">
+                <span class="evidence-modal-title" id="modal-active-response-title">TELEMETRY ARCHIVE // ACT-RESP-04 // AUTOMATED CONTAINMENT</span>
+                <button class="evidence-modal-close" onclick="closeEvidenceModal('modal-active-response')">[ X ] ESC</button>
+            </div>
+            <div class="evidence-modal-body">
+                <div class="evidence-modal-image-wrap">
+                    <img src="/evidence/active-response.jpg" alt="Active Response Host Quarantine Full Resolution Screenshot" class="evidence-modal-image">
+                </div>
+                <div class="evidence-modal-details">
+                    <h4 class="evidence-modal-heading">Automated Active Response: Endpoint Isolation &amp; Perimeter Blocking</h4>
+                    <div class="evidence-modal-meta-row">
+                        <span class="evidence-modal-badge bg-red/20 text-red border border-red/30">RESPONSE TIME: 820ms</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">ACTION: FIREWALL DROP + ISOLATE</span>
+                        <span class="evidence-modal-badge bg-white/10 text-white/80 border border-white/20">TARGET: 192.168.1.105</span>
+                    </div>
+                    <p class="evidence-modal-text">
+                        <strong>Lab Analysis Context:</strong> Demonstration of zero-touch automated defense orchestration. When rule 100201 fires on Wazuh Manager, the active-response daemon executes a signed bash/PowerShell containment command on the target host within 820ms. The script invokes Windows Advanced Firewall / iptables rules to immediately sever all incoming and outgoing connections except the dedicated Wazuh manager management channel (port 1514/1515), completely containing the adversary and stopping lateral movement.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script type="module" src="/script.js"></script>

@@ -2159,3 +2159,60 @@ body {
         transition: none !important;
     }
 }
+
+/* ==========================================================================
+   Main Header & Navigation Bar Layout (Fixed Distribution & Spacing)
+   ========================================================================== */
+.nav-shell {
+    display: flex !important;
+    justify-content: space-between !important; /* Pushes logo and button to the edges */
+    align-items: center !important;
+    width: 100% !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    opacity: 1 !important;
+    transition: all 0.3s ease;
+}
+
+.nav-shell.is-scrolled {
+    background: rgba(8, 8, 8, 0.95);
+    border-bottom: 1px solid rgba(255, 42, 42, 0.35);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.nav-links-container {
+    display: none;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 1280px) {
+    .nav-links-container {
+        display: flex;
+        gap: 2rem; /* 2rem space between menu options as requested */
+    }
+}
+
+.nav-links-container li {
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-links-container .nav-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+.lets-talk-btn {
+    margin-left: 2rem; /* Ensure button is distinctly separated */
+    flex-shrink: 0;
+    white-space: nowrap;
+}

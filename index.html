@@ -911,7 +911,7 @@
                                     <div class="flex-1 min-w-0">
                                         <div class="flex items-center justify-between gap-1">
                                             <h4 class="text-xs font-bold text-white tracking-wide">Full Architecture</h4>
-                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/10 text-white/70">ASCII</span>
+                                            <span class="text-[9px] font-mono px-1.5 py-0.2 rounded bg-white/10 text-white/70">SCHEMATIC</span>
                                         </div>
                                         <p class="text-[11px] text-white/50 mt-0.5">End-to-End Pipeline Schematic</p>
                                     </div>
@@ -980,48 +980,98 @@
                                 </div>
                                 
                                 <div class="soc-ascii-wrapper relative z-10 text-[9px] md:text-[10px] leading-relaxed font-mono" id="terminal-screen">
-                                    <pre class="soc-ascii-art">
-                 <span style="color:#38bdf8;font-weight:bold;">┌───────────────────────────┐</span>
-                 <span style="color:#38bdf8;font-weight:bold;">│     WINDOWS ENDPOINT      │</span>
-                 <span style="color:#38bdf8;font-weight:bold;">└─────────────┬─────────────┘</span>
-                               <span style="color:#38bdf8;">│</span>
-                     <span style="color:#fbbf24;font-weight:600;">[ Sysmon Agent ]</span>
-                               <span style="color:#38bdf8;">│</span>
-                               <span style="color:#38bdf8;">▼</span>
-                 <span style="color:#ff1e1e;font-weight:bold;">╔═══════════════════════════╗</span>
-                 <span style="color:#ff1e1e;font-weight:bold;">║        WAZUH SIEM         ║</span>
-                 <span style="color:#ff1e1e;font-weight:bold;">╚═════════════╤═════════════╝</span>
-                               <span style="color:#ff1e1e;">│</span>
-                   <span style="color:#ff4d4d;font-weight:600;">[ Detection Trigger ]</span>
-                               <span style="color:#ff1e1e;">│</span>
-                               <span style="color:#ff1e1e;">▼</span>
-                 <span style="color:#fbbf24;font-weight:bold;">┌───────────────────────────┐</span>
-                 <span style="color:#fbbf24;font-weight:bold;">│       ALERT TRIAGE        │</span>
-                 <span style="color:#fbbf24;font-weight:bold;">└─────────────┬─────────────┘</span>
-                               <span style="color:#fbbf24;">│</span>
-              <span style="color:rgba(255,255,255,0.45);">┌────────────────┴────────────────┐</span>
-              <span style="color:rgba(255,255,255,0.45);">│                                 │</span>
-              <span style="color:rgba(255,255,255,0.45);">▼                                 ▼</span>
-  <span style="color:#fb923c;font-weight:bold;">┌───────────────────────┐</span>         <span style="color:#60a5fa;font-weight:bold;">┌───────────────────────┐</span>
-  <span style="color:#fb923c;font-weight:bold;">│  THREAT INTELLIGENCE  │</span>         <span style="color:#60a5fa;font-weight:bold;">│      SNORT NIDS       │</span>
-  <span style="color:#fb923c;">│ VirusTotal / AbuseIPDB│</span>         <span style="color:#60a5fa;">│   Network Detection   │</span>
-  <span style="color:#fb923c;font-weight:bold;">└───────────┬───────────┘</span>         <span style="color:#60a5fa;font-weight:bold;">└───────────┬───────────┘</span>
-              <span style="color:rgba(255,255,255,0.45);">│                                 │</span>
-              <span style="color:rgba(255,255,255,0.45);">└────────────────┬────────────────┘</span>
-                               <span style="color:rgba(255,255,255,0.45);">│</span>
-                    <span style="color:#c084fc;font-weight:600;">[ Evidence Triage ]</span>
-                               <span style="color:#c084fc;">│</span>
-                               <span style="color:#c084fc;">▼</span>
-                 <span style="color:#c084fc;font-weight:bold;">┌───────────────────────────┐</span>
-                 <span style="color:#c084fc;font-weight:bold;">│          THEHIVE          │</span>
-                 <span style="color:#c084fc;font-weight:bold;">└─────────────┬─────────────┘</span>
-                               <span style="color:#c084fc;">│</span>
-                    <span style="color:#4ade80;font-weight:600;">[ Automated SOAR ]</span>
-                               <span style="color:#4ade80;">│</span>
-                               <span style="color:#4ade80;">▼</span>
-                 <span style="color:#4ade80;font-weight:bold;">╔═══════════════════════════╗</span>
-                 <span style="color:#4ade80;font-weight:bold;">║     INCIDENT RESPONSE     ║</span>
-                 <span style="color:#4ade80;font-weight:bold;">╚═══════════════════════════╝</span></pre>
+            <div class="soc-schematic-panel">
+                <!-- Node 1: Windows Endpoint -->
+                <div class="soc-node-box">
+                    <div class="soc-node-badge">SOURCE TELEMETRY</div>
+                    <div class="soc-node-name">WINDOWS ENDPOINT</div>
+                    <div class="soc-node-sub">Sysmon &middot; Win Event Log</div>
+                </div>
+
+                <!-- Connector 1 -->
+                <div class="soc-flow-connector">
+                    <div class="soc-flow-line"></div>
+                    <div class="soc-flow-pill">[ Sysmon Agent ]</div>
+                    <div class="soc-flow-line"></div>
+                    <div class="soc-flow-arrow">&#9660;</div>
+                </div>
+
+                <!-- Node 2: Wazuh SIEM -->
+                <div class="soc-node-box soc-node-hub">
+                    <div class="soc-node-badge text-red"><span class="h-1.5 w-1.5 rounded-full bg-red animate-pulse mr-1 inline-block" style="display:inline-block;width:6px;height:6px;border-radius:99px;background:#ff1e1e;"></span>CENTRAL HUB</div>
+                    <div class="soc-node-name">WAZUH SIEM</div>
+                    <div class="soc-node-sub">Log Ingestion &middot; Correlation Engine</div>
+                </div>
+
+                <!-- Connector 2: Active Detection Trigger (Neon Red Accent) -->
+                <div class="soc-flow-connector">
+                    <div class="soc-flow-line soc-line-active"></div>
+                    <div class="soc-flow-pill soc-pill-active">[ Detection Trigger ]</div>
+                    <div class="soc-flow-line soc-line-active"></div>
+                    <div class="soc-flow-arrow soc-arrow-active">&#9660;</div>
+                </div>
+
+                <!-- Node 3: Alert Triage -->
+                <div class="soc-node-box">
+                    <div class="soc-node-badge">PIPELINE STAGE</div>
+                    <div class="soc-node-name">ALERT TRIAGE</div>
+                    <div class="soc-node-sub">Severity Scoring &middot; Stream Splitting</div>
+                </div>
+
+                <!-- Fork Connector to Parallel Nodes -->
+                <div class="soc-fork-connector">
+                    <svg class="soc-fork-svg" viewBox="0 0 100 30" preserveAspectRatio="none" fill="none">
+                        <path d="M50 0 V14 H25 V26 M50 14 H75 V26" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                        <path d="M22 24 L25 30 L28 24 Z M72 24 L75 30 L78 24 Z" fill="rgba(255,255,255,0.4)"></path>
+                    </svg>
+                </div>
+
+                <!-- Parallel Nodes (Threat Intel & Snort NIDS) -->
+                <div class="soc-parallel-grid">
+                    <div class="soc-node-box soc-node-subbranch">
+                        <div class="soc-node-badge">ENRICHMENT</div>
+                        <div class="soc-node-name">THREAT INTELLIGENCE</div>
+                        <div class="soc-node-sub">VirusTotal &middot; AbuseIPDB</div>
+                    </div>
+                    <div class="soc-node-box soc-node-subbranch">
+                        <div class="soc-node-badge">NIDS ENGINE</div>
+                        <div class="soc-node-name">SNORT NIDS</div>
+                        <div class="soc-node-sub">Network Packet Detection</div>
+                    </div>
+                </div>
+
+                <!-- Merge Connector from Parallel Nodes -->
+                <div class="soc-merge-connector">
+                    <svg class="soc-merge-svg" viewBox="0 0 100 22" preserveAspectRatio="none" fill="none">
+                        <path d="M25 0 V12 H50 V22 M75 0 V12 H50" stroke="rgba(255,255,255,0.22)" stroke-width="1.5" vector-effect="non-scaling-stroke"></path>
+                    </svg>
+                    <div class="soc-flow-pill mt-1">[ Evidence Triage ]</div>
+                    <div class="soc-flow-line"></div>
+                    <div class="soc-flow-arrow">&#9660;</div>
+                </div>
+
+                <!-- Node 6: TheHive -->
+                <div class="soc-node-box">
+                    <div class="soc-node-badge">CASE MANAGEMENT</div>
+                    <div class="soc-node-name">THEHIVE</div>
+                    <div class="soc-node-sub">Incident Escalation &middot; Case #104</div>
+                </div>
+
+                <!-- Connector 6 -->
+                <div class="soc-flow-connector">
+                    <div class="soc-flow-line"></div>
+                    <div class="soc-flow-pill">[ Automated SOAR ]</div>
+                    <div class="soc-flow-line"></div>
+                    <div class="soc-flow-arrow">&#9660;</div>
+                </div>
+
+                <!-- Node 7: Incident Response -->
+                <div class="soc-node-box soc-node-response">
+                    <div class="soc-node-badge text-green-400 font-bold"><span class="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse mr-1 inline-block" style="display:inline-block;width:6px;height:6px;border-radius:99px;background:#4ade80;"></span>CONTAINMENT ENGAGED</div>
+                    <div class="soc-node-name text-white">INCIDENT RESPONSE</div>
+                    <div class="soc-node-sub">Host Isolation &middot; Firewall IP Block</div>
+                </div>
+            </div>
                                 </div>
                             </div>
                             

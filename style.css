@@ -1786,3 +1786,201 @@ body {
     justify-content: space-between;
   }
 }
+
+/* ==========================================================================
+   Interactive SOC Architecture Schematic (CSS Terminal Nodes)
+   ========================================================================== */
+
+.soc-schematic-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.25rem 0.75rem;
+  background: rgba(15, 15, 15, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.7), 0 8px 32px rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+
+/* Individual Architecture Node Box */
+.soc-node-box {
+  width: 100%;
+  max-width: 320px;
+  background: rgba(24, 24, 24, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  text-align: center;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  position: relative;
+}
+
+.soc-node-box:hover {
+  background: rgba(30, 30, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+/* Central Hub Glow (Wazuh SIEM) */
+.soc-node-box.soc-node-hub {
+  border-color: rgba(255, 30, 30, 0.35);
+  background: linear-gradient(180deg, rgba(32, 16, 16, 0.9), rgba(20, 12, 12, 0.9));
+  box-shadow: 0 0 24px rgba(255, 30, 30, 0.12), inset 0 0 16px rgba(255, 30, 30, 0.06);
+}
+
+.soc-node-box.soc-node-hub:hover {
+  border-color: rgba(255, 30, 30, 0.6);
+  box-shadow: 0 0 30px rgba(255, 30, 30, 0.22);
+}
+
+/* Incident Response Containment Engaged Box */
+.soc-node-box.soc-node-response {
+  border-color: rgba(34, 197, 94, 0.35);
+  background: linear-gradient(180deg, rgba(14, 28, 18, 0.85), rgba(10, 20, 14, 0.9));
+  box-shadow: 0 0 20px rgba(34, 197, 94, 0.1);
+}
+
+/* Internal Typography of Nodes */
+.soc-node-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.soc-node-name {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.soc-node-sub {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 0.25rem;
+}
+
+/* Flowchart Connectors */
+.soc-flow-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0.2rem 0;
+}
+
+.soc-flow-line {
+  width: 1.5px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.soc-flow-line.soc-line-active {
+  background: #ff1e1e;
+  box-shadow: 0 0 8px rgba(255, 30, 30, 0.6);
+}
+
+.soc-flow-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0.2rem 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Neon Red Highlight for Detection Trigger */
+.soc-flow-pill.soc-pill-active {
+  border-color: rgba(255, 30, 30, 0.6);
+  color: #ff3b3b;
+  background: rgba(30, 8, 8, 0.95);
+  box-shadow: 0 0 14px rgba(255, 30, 30, 0.35);
+  font-weight: 700;
+}
+
+.soc-flow-arrow {
+  font-size: 0.55rem;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.soc-flow-arrow.soc-arrow-active {
+  color: #ff1e1e;
+  filter: drop-shadow(0 0 4px rgba(255, 30, 30, 0.7));
+}
+
+/* Parallel Fork & Merge Sections */
+.soc-fork-connector {
+  width: 100%;
+  max-width: 440px;
+  height: 30px;
+  margin-top: 0.1rem;
+}
+
+.soc-fork-svg,
+.soc-merge-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.soc-parallel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 440px;
+}
+
+.soc-node-box.soc-node-subbranch {
+  max-width: none;
+  padding: 0.55rem 0.75rem;
+}
+
+.soc-node-box.soc-node-subbranch .soc-node-name {
+  font-size: 0.74rem;
+}
+
+.soc-node-box.soc-node-subbranch .soc-node-sub {
+  font-size: 0.64rem;
+}
+
+.soc-merge-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 440px;
+  margin-bottom: 0.1rem;
+}
+
+.soc-merge-connector .soc-merge-svg {
+  height: 22px;
+}

@@ -22,26 +22,53 @@
         <div class="cursor-follower" aria-hidden="true"></div>
 
         <!-- Navigation Header -->
-        <header class="nav-shell flex items-center justify-between w-full px-6 md:px-10 lg:px-12 py-4 fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur-xl transition-all duration-300">
+        <header class="nav-shell flex items-center justify-between w-full px-4 sm:px-6 md:px-8 lg:px-12 py-3.5 fixed top-0 left-0 right-0 z-50 border-b border-white/10 bg-black/85 backdrop-blur-xl transition-all duration-300">
             <!-- 1. Logo -->
-            <a href="#home" class="logo font-bebas text-2xl md:text-3xl leading-none tracking-normal text-white shrink-0">Yuvaraj.<span class="text-red">C</span></a>
+            <a href="#home" class="logo font-bebas text-2xl md:text-3xl leading-none tracking-normal text-white shrink-0 hover:text-red transition-colors">Yuvaraj.<span class="text-red">C</span></a>
             
             <!-- 2. Nav Links -->
-            <ul class="nav-links-container hidden xl:flex items-center gap-8 text-xs lg:text-sm uppercase tracking-widest text-white/80 list-none m-0 p-0">
+            <ul class="nav-links-container hidden md:flex items-center gap-3 lg:gap-5 xl:gap-7 text-[11px] lg:text-xs uppercase tracking-widest text-white/80 list-none m-0 p-0">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#arsenal" class="nav-link">Arsenal</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
                 <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#playbooks" class="nav-link">Playbooks</a></li>
                 <li><a href="#evidence" class="nav-link">Evidence</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
                 <li><a href="#community" class="nav-link">Leadership</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
-            <!-- 3. Button -->
-            <a href="#contact" class="magnetic rounded-full bg-red px-5 py-2.5 font-semibold text-white lets-talk-btn ml-8 shrink-0 text-xs uppercase tracking-wider">Let's Talk</a>
+            <!-- 3. Actions: Let's Talk CTA & Mobile Menu Toggle -->
+            <div class="header-actions flex items-center gap-3 shrink-0">
+                <a href="#contact" class="magnetic rounded-full bg-red px-5 py-2.5 font-semibold text-white lets-talk-btn text-xs uppercase tracking-wider shrink-0">Let's Talk</a>
+                <button type="button" id="mobile-menu-toggle" class="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-white/15 bg-white/5 text-white hover:text-red hover:border-red/40 transition-colors focus:outline-none" aria-label="Toggle navigation menu">
+                    <i class="uil uil-bars text-lg" id="menu-icon"></i>
+                </button>
+            </div>
         </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu-drawer" class="mobile-nav-drawer hidden fixed inset-x-0 top-[58px] z-40 bg-black/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
+            <ul class="flex flex-col gap-3.5 text-xs font-mono uppercase tracking-widest text-white/80 list-none m-0 p-0">
+                <li><a href="#about" class="nav-link mobile-link block py-1.5 hover:text-red">About</a></li>
+                <li><a href="#arsenal" class="nav-link mobile-link block py-1.5 hover:text-red">Arsenal</a></li>
+                <li><a href="#education" class="nav-link mobile-link block py-1.5 hover:text-red">Education</a></li>
+                <li><a href="#services" class="nav-link mobile-link block py-1.5 hover:text-red">Services</a></li>
+                <li><a href="#experience" class="nav-link mobile-link block py-1.5 hover:text-red">Experience</a></li>
+                <li><a href="#projects" class="nav-link mobile-link block py-1.5 hover:text-red">Projects</a></li>
+                <li><a href="#playbooks" class="nav-link mobile-link block py-1.5 hover:text-red">Playbooks</a></li>
+                <li><a href="#evidence" class="nav-link mobile-link block py-1.5 hover:text-red">Evidence</a></li>
+                <li><a href="#certifications" class="nav-link mobile-link block py-1.5 hover:text-red">Certifications</a></li>
+                <li><a href="#community" class="nav-link mobile-link block py-1.5 hover:text-red">Leadership</a></li>
+                <li><a href="#contact" class="nav-link mobile-link block py-1.5 hover:text-red">Contact</a></li>
+                <li class="pt-3 border-t border-white/10">
+                    <a href="#contact" class="mobile-link inline-block rounded-full bg-red px-5 py-2.5 font-semibold text-white text-xs uppercase tracking-wider">Let's Talk</a>
+                </li>
+            </ul>
+        </div>
 
         <!-- Hero Section -->
         <section class="hero-bg relative flex min-h-screen items-center px-5 py-24 md:px-10">

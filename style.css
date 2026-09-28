@@ -2051,18 +2051,18 @@ body {
    ========================================================================== */
 .typing-header {
     display: inline-block;
-    overflow: hidden; 
     border-right: .15em solid transparent;
     white-space: nowrap; 
     letter-spacing: .15em; 
-    max-width: 0;
     vertical-align: bottom;
+    max-width: 100%;
 }
 
 .typing-header.active,
 .reveal.active .typing-header,
 .reveal-left.active .typing-header,
 .reveal-right.active .typing-header {
+    overflow: hidden;
     border-right: .15em solid #ff2a2a; /* The red cursor */
     animation: 
       typing 1.8s steps(40, end) forwards,
@@ -2168,19 +2168,32 @@ body {
     justify-content: space-between !important; /* Pushes logo and button to the edges */
     align-items: center !important;
     width: 100% !important;
+    min-height: 68px;
+    padding: 1rem 1.5rem !important;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 50;
     opacity: 1 !important;
+    background: rgba(5, 5, 5, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+@media (min-width: 1200px) {
+    .nav-shell {
+        padding: 1rem 2rem !important;
+    }
 }
 
 .nav-shell.is-scrolled {
-    background: rgba(8, 8, 8, 0.95);
+    background: rgba(8, 8, 8, 0.96);
     border-bottom: 1px solid rgba(255, 42, 42, 0.35);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85);
 }
 
 .nav-links-container {
@@ -2189,12 +2202,31 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
+    gap: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .nav-links-container {
+        display: flex;
+        gap: 0.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .nav-links-container {
+        gap: 0.75rem;
+    }
 }
 
 @media (min-width: 1280px) {
     .nav-links-container {
-        display: flex;
-        gap: 2rem; /* 2rem space between menu options as requested */
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 1440px) {
+    .nav-links-container {
+        gap: 1.25rem;
     }
 }
 
@@ -2204,15 +2236,49 @@ body {
 }
 
 .nav-links-container .nav-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     transition: color 0.2s ease;
     white-space: nowrap;
 }
 
+@media (min-width: 1280px) {
+    .nav-links-container .nav-link {
+        font-size: 0.76rem;
+        letter-spacing: 0.15em;
+    }
+}
+
+.header-actions {
+    margin-left: 1.5rem;
+}
+
+@media (min-width: 1280px) {
+    .header-actions {
+        margin-left: 2rem;
+    }
+}
+
 .lets-talk-btn {
-    margin-left: 2rem; /* Ensure button is distinctly separated */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     white-space: nowrap;
+}
+
+#mobile-menu-toggle {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    #mobile-menu-toggle {
+        display: flex;
+    }
+}
+
+/* Mobile Nav Drawer */
+.mobile-nav-drawer {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
 }

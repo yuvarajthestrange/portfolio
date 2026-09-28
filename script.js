@@ -444,3 +444,29 @@ if (document.readyState === 'loading') {
     initExperienceObserver();
 }
 
+// Typing Headers Intersection Observer
+const initTypingHeaderObserver = () => {
+    const typingHeaders = document.querySelectorAll('.typing-header');
+    if (!typingHeaders.length) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    typingHeaders.forEach(header => {
+        observer.observe(header);
+    });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initTypingHeaderObserver);
+} else {
+    initTypingHeaderObserver();
+}

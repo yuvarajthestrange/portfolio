@@ -1984,3 +1984,28 @@ body {
 .soc-merge-connector .soc-merge-svg {
   height: 22px;
 }
+
+/* ==========================================================================
+   Experience Block Scroll Animations (Terminal White Flash)
+   ========================================================================== */
+
+/* Initial hidden state for the experience blocks */
+.experience-block {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* The state when the user scrolls to it */
+.experience-block.scrolled-in {
+    opacity: 1;
+    transform: translateY(0);
+    animation: terminal-white-flash 0.8s ease-out forwards;
+}
+
+/* The white flash effect */
+@keyframes terminal-white-flash {
+    0% { filter: brightness(1); }
+    30% { filter: brightness(2) drop-shadow(0 0 10px rgba(255,255,255,0.8)); }
+    100% { filter: brightness(1); }
+}

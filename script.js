@@ -416,3 +416,31 @@ document.addEventListener('click', (e) => {
         document.body.style.overflow = '';
     }
 });
+
+// Experience Blocks Intersection Observer (Terminal White Flash)
+const initExperienceObserver = () => {
+    const elementsToAnimate = document.querySelectorAll('.experience-block');
+    if (!elementsToAnimate.length) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('scrolled-in');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        threshold: 0.15 // Triggers when 15% of the element is visible
+    });
+
+    elementsToAnimate.forEach(element => {
+        observer.observe(element);
+    });
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initExperienceObserver);
+} else {
+    initExperienceObserver();
+}
+

@@ -27,6 +27,7 @@
                 <a href="#home" class="font-bebas text-2xl leading-none tracking-normal text-white">Yuvaraj.<span class="text-red">C</span></a>
                 <div class="hidden items-center gap-5 md:flex">
                     <a href="#about" class="nav-link">About</a>
+                    <a href="#arsenal" class="nav-link">Arsenal</a>
                     <a href="#experience" class="nav-link">Experience</a>
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#projects" class="nav-link">Projects</a>
@@ -106,63 +107,272 @@
             </div>
         </div>
 
-        <!-- Interactive Console -->
-        <section class="interactive-console bg-black px-5 py-16 text-white md:px-10">
-            <div class="mx-auto max-w-[1080px]">
-                <div class="console-intro reveal-left mb-10 max-w-2xl">
-                    <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red mb-3">SOC Operations // Technical Capabilities</p>
-                    <h2 class="split-heading font-bebas text-[clamp(2.4rem,4.2vw,4rem)] leading-[0.82]">Security Operations Stack</h2>
-                    <p class="mt-4 max-w-xl text-sm leading-7 text-white/62">Operational toolchain and methodology across threat detection, forensic investigation, incident response, and security automation.</p>
+        <!-- Technical Arsenal Section -->
+        <section id="arsenal" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
+            <div class="mx-auto max-w-[1180px] px-5 md:px-10">
+                <div class="max-w-5xl reveal mb-14">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
+                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red">[ TECHNICAL ARSENAL ] // WORKFLOW-ALIGNED STACK</p>
+                    </div>
+                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase">Technical Arsenal</h2>
+                    <p class="mt-4 max-w-2xl text-base text-white/60">Core security tooling, monitoring platforms, and engineering technologies organized by operational workflow.</p>
                 </div>
-                <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 reveal-right">
-                    <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                            <circle cx="12" cy="11" r="3"></circle>
-                        </svg>
-                        <h3>DETECT</h3>
-                        <p>Wazuh &middot; Splunk &middot; Sysmon &middot; Snort</p>
-                        <div class="console-meter"><span style="width:95%"></span></div>
+
+                <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    <!-- Workflow 01: SIEM -->
+                    <article class="arsenal-card reveal p-6 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                        <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                        <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                        <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_01 ]</span>
+                            </div>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                            <h3 class="font-bebas text-2xl tracking-wide text-white mt-1 mb-2 group-hover:text-red transition-colors">SIEM</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Centralized log collection, ingestion pipelines, rule correlation, and real-time alert triage.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Splunk
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Wazuh
+                                </span>
+                            </div>
+                            <p class="font-mono text-[11px] text-white/40 flex items-center gap-1.5">
+                                <span class="text-red font-bold">&gt;</span> Splunk &middot; Wazuh
+                            </p>
+                        </div>
                     </article>
-                    <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            <path d="m11 8v6"></path>
-                            <path d="m8 11h6"></path>
-                        </svg>
-                        <h3>INVESTIGATE</h3>
-                        <p>Wireshark &middot; TheHive &middot; VirusTotal &middot; AbuseIPDB</p>
-                        <div class="console-meter"><span style="width:90%"></span></div>
+
+                    <!-- Workflow 02: Endpoint -->
+                    <article class="arsenal-card reveal delay-100 p-6 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                        <line x1="8" y1="21" x2="16" y2="21"></line>
+                                        <line x1="12" y1="17" x2="12" y2="21"></line>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_02 ]</span>
+                            </div>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                            <h3 class="font-bebas text-2xl tracking-wide text-white mt-1 mb-2 group-hover:text-red transition-colors">Endpoint</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Host-level telemetry auditing, process execution tracing, command-line inspection, and event ID correlation.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Sysmon
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Windows Security Monitoring
+                                </span>
+                            </div>
+                            <p class="font-mono text-[11px] text-white/40 flex items-center gap-1.5">
+                                <span class="text-red font-bold">&gt;</span> Sysmon &middot; Windows Security Monitoring
+                            </p>
+                        </div>
                     </article>
-                    <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
-                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                        </svg>
-                        <h3>RESPOND</h3>
-                        <p>Incident Response &middot; IOC Analysis &middot; Threat Intelligence</p>
-                        <div class="console-meter"><span style="width:88%"></span></div>
+
+                    <!-- Workflow 03: Network -->
+                    <article class="arsenal-card reveal delay-200 p-6 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_03 ]</span>
+                            </div>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                            <h3 class="font-bebas text-2xl tracking-wide text-white mt-1 mb-2 group-hover:text-red transition-colors">Network</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Deep packet inspection, network flow analysis, NIDS rule matching, and network boundary scanning.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Wireshark
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Snort
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Nmap
+                                </span>
+                            </div>
+                            <p class="font-mono text-[11px] text-white/40 flex items-center gap-1.5">
+                                <span class="text-red font-bold">&gt;</span> Wireshark &middot; Snort &middot; Nmap
+                            </p>
+                        </div>
                     </article>
-                    <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
-                            <polyline points="4 17 10 11 4 5"></polyline>
-                            <line x1="12" y1="19" x2="20" y2="19"></line>
-                        </svg>
-                        <h3>AUTOMATE</h3>
-                        <p>Python &middot; Flask &middot; REST APIs &middot; Security Automation</p>
-                        <div class="console-meter"><span style="width:85%"></span></div>
+
+                    <!-- Workflow 04: Investigation -->
+                    <article class="arsenal-card reveal p-6 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                        <line x1="11" y1="8" x2="11" y2="14"></line>
+                                        <line x1="8" y1="11" x2="14" y2="11"></line>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_04 ]</span>
+                            </div>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                            <h3 class="font-bebas text-2xl tracking-wide text-white mt-1 mb-2 group-hover:text-red transition-colors">Investigation</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Incident case management, malware artifact detonation, external reputation checks, and forensic triage.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>TheHive
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>VirusTotal
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>AbuseIPDB
+                                </span>
+                            </div>
+                            <p class="font-mono text-[11px] text-white/40 flex items-center gap-1.5">
+                                <span class="text-red font-bold">&gt;</span> TheHive &middot; VirusTotal &middot; AbuseIPDB
+                            </p>
+                        </div>
                     </article>
-                    <article class="console-card">
-                        <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1.2em" width="1.2em" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <line x1="22" y1="12" x2="18" y2="12"></line>
-                            <line x1="6" y1="12" x2="2" y2="12"></line>
-                            <line x1="12" y1="6" x2="12" y2="2"></line>
-                            <line x1="12" y1="22" x2="12" y2="18"></line>
-                        </svg>
-                        <h3>OFFENSIVE KNOWLEDGE</h3>
-                        <p>Burp Suite &middot; Nmap &middot; OWASP &middot; Metasploit</p>
-                        <div class="console-meter"><span style="width:86%"></span></div>
+
+                    <!-- Workflow 05: Threat Intelligence -->
+                    <article class="arsenal-card reveal delay-100 p-6 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="22" y1="12" x2="18" y2="12"></line>
+                                        <line x1="6" y1="12" x2="2" y2="12"></line>
+                                        <line x1="12" y1="6" x2="12" y2="2"></line>
+                                        <line x1="12" y1="22" x2="12" y2="18"></line>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_05 ]</span>
+                            </div>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                            <h3 class="font-bebas text-2xl tracking-wide text-white mt-1 mb-2 group-hover:text-red transition-colors">Threat Intelligence</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Adversary TTP mapping, indicator of compromise analysis, contextual feed enrichment, and threat actor profiling.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>IOC Analysis
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>CTI
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Threat Enrichment
+                                </span>
+                            </div>
+                            <p class="font-mono text-[11px] text-white/40 flex items-center gap-1.5">
+                                <span class="text-red font-bold">&gt;</span> IOC Analysis &middot; CTI &middot; Threat Enrichment
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Workflow 06: Automation -->
+                    <article class="arsenal-card reveal delay-200 p-6 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group flex flex-col justify-between overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-10 h-10 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="20" width="20" xmlns="http://www.w3.org/2000/svg">
+                                        <polyline points="16 18 22 12 16 6"></polyline>
+                                        <polyline points="8 6 2 12 8 18"></polyline>
+                                    </svg>
+                                </div>
+                                <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_06 ]</span>
+                            </div>
+                            <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                            <h3 class="font-bebas text-2xl tracking-wide text-white mt-1 mb-2 group-hover:text-red transition-colors">Automation</h3>
+                            <p class="text-xs text-white/50 leading-relaxed">Custom parsing scripts, webhook integrators, security SOAR automations, and lightweight API microservices.</p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-white/10">
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Python
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Flask
+                                </span>
+                                <span class="arsenal-pill">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>REST APIs
+                                </span>
+                            </div>
+                            <p class="font-mono text-[11px] text-white/40 flex items-center gap-1.5">
+                                <span class="text-red font-bold">&gt;</span> Python &middot; Flask &middot; REST APIs
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Workflow 07: Offensive Security -->
+                    <article class="arsenal-card arsenal-card-wide reveal p-6 sm:p-8 rounded-xl border border-white/10 bg-[#0c0c0c] hover:border-red/40 hover:bg-[#111111] transition-all duration-300 relative group overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(255,30,30,0.12)]">
+                        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="arsenal-wide-inner">
+                            <div class="flex items-start sm:items-center gap-4">
+                                <div class="w-12 h-12 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-red group-hover:border-red/40 transition-colors shrink-0">
+                                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" height="24" width="24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        <circle cx="12" cy="11" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="flex items-center gap-3">
+                                        <p class="text-[11px] font-mono font-bold uppercase tracking-widest text-red">WORKFLOW</p>
+                                        <span class="font-mono text-[11px] text-white/40 tracking-wider">[ WF_07 // ADVERSARY EMULATION ]</span>
+                                    </div>
+                                    <h3 class="font-bebas text-2xl sm:text-3xl tracking-wide text-white mt-1 group-hover:text-red transition-colors">Offensive Security</h3>
+                                    <p class="text-xs text-white/50 max-w-xl mt-1 leading-relaxed">Adversary simulation and web vulnerability assessment to validate and strengthen defensive detection logic.</p>
+                                </div>
+                            </div>
+                            <div class="lg:text-right pt-4 lg:pt-0 border-t border-white/10 lg:border-t-0">
+                                <div class="flex flex-wrap lg:justify-end gap-2 mb-3">
+                                    <span class="arsenal-pill">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Burp Suite
+                                    </span>
+                                    <span class="arsenal-pill">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>OWASP
+                                    </span>
+                                    <span class="arsenal-pill">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>Metasploit
+                                    </span>
+                                    <span class="arsenal-pill">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-red mr-2"></span>ZAP
+                                    </span>
+                                </div>
+                                <p class="font-mono text-[11px] text-white/40 flex items-center lg:justify-end gap-1.5">
+                                    <span class="text-red font-bold">&gt;</span> Burp Suite &middot; OWASP &middot; Metasploit &middot; ZAP
+                                </p>
+                            </div>
+                        </div>
                     </article>
                 </div>
             </div>

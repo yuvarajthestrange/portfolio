@@ -230,6 +230,28 @@ if (moduleButtons && terminalHeading && terminalScreen) {
     });
 }
 
+// Tactical AnimatedList Sequential Stagger Engine
+function triggerAnimatedList(container, customDelay = null) {
+    if (!container) return;
+    const items = container.querySelectorAll('.animated-item');
+    if (!items.length) return;
+
+    const delay = customDelay !== null ? customDelay : (parseInt(container.dataset.delay, 10) || 120);
+
+    // Reset current animation states
+    items.forEach(item => item.classList.remove('animate-in'));
+
+    // Force reflow so re-trigger works smoothly
+    void container.offsetWidth;
+
+    // Stagger animation items
+    items.forEach((item, index) => {
+        setTimeout(() => {
+            item.classList.add('animate-in');
+        }, index * delay);
+    });
+}
+
 // Case Playbook Scenarios Tab Switcher
 const caseTabBtns = document.querySelectorAll('.case-tab-btn');
 const caseScenarios = document.querySelectorAll('.case-scenario');
@@ -249,6 +271,10 @@ if (caseTabBtns.length > 0 && caseScenarios.length > 0) {
             const targetScenario = document.getElementById(targetId);
             if (targetScenario) {
                 targetScenario.classList.add('active');
+                const timeline = targetScenario.querySelector('.case-timeline.animated-list');
+                if (timeline) {
+                    triggerAnimatedList(timeline, 120);
+                }
             }
         });
     });
@@ -417,7 +443,7 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Experience Blocks Intersection Observer (Terminal White Flash)
+// Experience Blocks Intersection Observer (Terminal White Flash & Sequential Tags)
 const initExperienceObserver = () => {
     const elementsToAnimate = document.querySelectorAll('.experience-block');
     if (!elementsToAnimate.length) return;
@@ -426,6 +452,12 @@ const initExperienceObserver = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('scrolled-in');
+                const tagsList = entry.target.querySelector('.op-log-tags.animated-list');
+                if (tagsList) {
+                    setTimeout(() => {
+                        triggerAnimatedList(tagsList, 100);
+                    }, 250);
+                }
                 observer.unobserve(entry.target); 
             }
         });
@@ -442,6 +474,59 @@ if (document.readyState === 'loading') {
     document.addEventListener("DOMContentLoaded", initExperienceObserver);
 } else {
     initExperienceObserver();
+}
+
+// Technical Arsenal Grid Observer (Sequential Stagger)
+const initArsenalObserver = () => {
+    const arsenalList = document.querySelector('#arsenal .animated-list');
+    if (!arsenalList) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                triggerAnimatedList(arsenalList, 160);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    observer.observe(arsenalList);
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initArsenalObserver);
+} else {
+    initArsenalObserver();
+}
+
+// Incident Playbooks Observer (Initial Scroll Stagger)
+const initPlaybooksObserver = () => {
+    const playbooksSection = document.getElementById('playbooks');
+    if (!playbooksSection) return;
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const activeTimeline = playbooksSection.querySelector('.case-scenario.active .case-timeline.animated-list');
+                if (activeTimeline) {
+                    triggerAnimatedList(activeTimeline, 120);
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    observer.observe(playbooksSection);
+};
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initPlaybooksObserver);
+} else {
+    initPlaybooksObserver();
 }
 
 // Typing Headers Intersection Observer

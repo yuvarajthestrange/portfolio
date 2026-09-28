@@ -2131,3 +2131,31 @@ body {
   94% { transform: skew(-3deg) scale(1.02); box-shadow: 2px 0 10px rgba(255, 42, 42, 0.6); }
   96% { transform: skew(0deg) scale(1); }
 }
+
+/* ==========================================================================
+   Tactical AnimatedList Component Styles (Blue Team Sequential Stagger)
+   ========================================================================== */
+.animated-list {
+    position: relative;
+}
+
+.animated-item {
+    opacity: 0 !important;
+    transform: translateY(15px) !important;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    will-change: opacity, transform;
+}
+
+.animated-item.animate-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animated-item {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}

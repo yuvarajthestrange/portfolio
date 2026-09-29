@@ -2282,3 +2282,218 @@ body {
 .mobile-nav-drawer {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
 }
+
+/* 2026 UX / A11Y / Nav Consolidation Updates */
+
+/* 1. Navigation Dropdown Styles */
+.nav-dropdown-item {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.nav-dropdown-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: inherit;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.25rem 0;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+}
+
+@media (min-width: 1280px) {
+    .nav-dropdown-btn {
+        font-size: 0.76rem;
+        letter-spacing: 0.15em;
+    }
+}
+
+.nav-dropdown-btn:hover,
+.nav-dropdown-item:hover .nav-dropdown-btn,
+.nav-dropdown-item:focus-within .nav-dropdown-btn {
+    color: #ff5252 !important;
+}
+
+.nav-dropdown-btn svg {
+    transition: transform 0.2s ease;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-btn svg,
+.nav-dropdown-item:focus-within .nav-dropdown-btn svg,
+.nav-dropdown-item.dropdown-open .nav-dropdown-btn svg {
+    transform: rotate(180deg);
+    color: #ff5252;
+}
+
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    z-index: 60;
+    padding-top: 0.6rem;
+}
+
+.nav-dropdown-item:hover .nav-dropdown-menu,
+.nav-dropdown-item:focus-within .nav-dropdown-menu,
+.nav-dropdown-item.dropdown-open .nav-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.nav-dropdown-panel {
+    background: rgba(12, 12, 12, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    padding: 0.5rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 30, 30, 0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+}
+
+.dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: #ffffff;
+    border-left: 2px solid #ff5252;
+    padding-left: 0.85rem;
+}
+
+.dropdown-link .dropdown-arrow {
+    color: #ff5252;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+/* 2. Micro-Interactions on Badges & Skill Tags */
+.op-tag {
+    transition: all 0.2s ease !important;
+    cursor: default;
+}
+
+.op-tag:hover {
+    color: #ffffff !important;
+    border-color: #ff5252 !important;
+    background: rgba(255, 30, 30, 0.15) !important;
+    box-shadow: 0 0 10px rgba(255, 42, 42, 0.3) !important;
+    transform: translateY(-1px);
+}
+
+.arsenal-pill,
+.mod-badge,
+.soc-tech-badge {
+    transition: all 0.2s ease !important;
+    cursor: default;
+}
+
+.arsenal-pill:hover,
+.mod-badge:hover,
+.soc-tech-badge:hover {
+    border-color: rgba(255, 82, 82, 0.55) !important;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 0 12px rgba(255, 30, 30, 0.2);
+}
+
+/* 3. Hero Terminal Typing Animation */
+.hero-terminal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0.95rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(12, 12, 12, 0.85);
+    backdrop-filter: blur(12px);
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.hero-typing-prompt {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 2px solid #ff5252;
+    animation: hero-type 1.4s steps(32, end) forwards, hero-blink 0.75s step-end infinite;
+    max-width: 0;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #ff5252;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+@keyframes hero-type {
+    from { max-width: 0; }
+    to { max-width: 100%; }
+}
+
+@keyframes hero-blink {
+    from, to { border-color: transparent; }
+    50% { border-color: #ff5252; }
+}
+
+/* 4. Fast, Snappy Scroll Animations (Under 400ms) */
+.reveal,
+.reveal-left,
+.reveal-right {
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.experience-block {
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out !important;
+}
+
+.experience-block.scrolled-in {
+    animation: terminal-white-flash 0.35s ease-out forwards !important;
+}
+
+@keyframes terminal-white-flash {
+    0% { filter: brightness(1); }
+    35% { filter: brightness(1.6) drop-shadow(0 0 8px rgba(255,255,255,0.7)); }
+    100% { filter: brightness(1); }
+}
+
+/* 5. Accessibility (a11y) Contrast Enhancements */
+.text-red {
+    color: #ff5252 !important; /* 6.52:1 contrast against pure black (WCAG AA compliant) */
+}
+
+/* Ensure readable contrast for secondary/muted text across dark backgrounds */
+.text-white\/40,
+.text-white\/50 {
+    color: rgba(255, 255, 255, 0.70) !important; /* > 7.5:1 contrast against black */
+}

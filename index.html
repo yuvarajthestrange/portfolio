@@ -26,18 +26,62 @@
             <!-- 1. Logo -->
             <a href="#home" class="logo font-bebas text-2xl md:text-3xl leading-none tracking-normal text-white shrink-0 hover:text-red transition-colors">Yuvaraj.<span class="text-red">C</span></a>
             
-            <!-- 2. Nav Links -->
+            <!-- 2. Nav Links (Consolidated 7 Top-Level Items) -->
             <ul class="nav-links-container hidden md:flex items-center gap-3 lg:gap-5 xl:gap-7 text-[11px] lg:text-xs uppercase tracking-widest text-white/80 list-none m-0 p-0">
                 <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#arsenal" class="nav-link">Arsenal</a></li>
-                <li><a href="#education" class="nav-link">Education</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#playbooks" class="nav-link">Playbooks</a></li>
-                <li><a href="#evidence" class="nav-link">Evidence</a></li>
-                <li><a href="#certifications" class="nav-link">Certifications</a></li>
                 <li><a href="#community" class="nav-link">Leadership</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#arsenal" class="nav-link">Arsenal</a></li>
+                
+                <!-- Portfolio Dropdown -->
+                <li class="nav-dropdown-item relative group">
+                    <button type="button" class="nav-link nav-dropdown-btn flex items-center gap-1.5 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                        <span>Portfolio</span>
+                        <svg class="w-3 h-3 text-white/50 group-hover:text-red transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <div class="nav-dropdown-panel">
+                            <a href="#projects" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Case Studies
+                            </a>
+                            <a href="#detection-lab" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Detection Lab
+                            </a>
+                            <a href="#playbooks" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Incident Playbooks
+                            </a>
+                            <a href="#evidence" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Telemetry Evidence
+                            </a>
+                            <a href="#services" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Defensive Services
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- Credentials Dropdown -->
+                <li class="nav-dropdown-item relative group">
+                    <button type="button" class="nav-link nav-dropdown-btn flex items-center gap-1.5 focus:outline-none" aria-haspopup="true" aria-expanded="false">
+                        <span>Credentials</span>
+                        <svg class="w-3 h-3 text-white/50 group-hover:text-red transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <div class="nav-dropdown-panel">
+                            <a href="#certifications" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Certifications
+                            </a>
+                            <a href="#education" class="dropdown-link">
+                                <span class="dropdown-arrow">&gt;</span> Education
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
 
@@ -51,23 +95,45 @@
         </header>
 
         <!-- Mobile Navigation Drawer -->
-        <div id="mobile-menu-drawer" class="mobile-nav-drawer hidden fixed inset-x-0 top-[58px] z-40 bg-black/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300">
-            <ul class="flex flex-col gap-3.5 text-xs font-mono uppercase tracking-widest text-white/80 list-none m-0 p-0">
-                <li><a href="#about" class="nav-link mobile-link block py-1.5 hover:text-red">About</a></li>
-                <li><a href="#arsenal" class="nav-link mobile-link block py-1.5 hover:text-red">Arsenal</a></li>
-                <li><a href="#education" class="nav-link mobile-link block py-1.5 hover:text-red">Education</a></li>
-                <li><a href="#services" class="nav-link mobile-link block py-1.5 hover:text-red">Services</a></li>
-                <li><a href="#experience" class="nav-link mobile-link block py-1.5 hover:text-red">Experience</a></li>
-                <li><a href="#projects" class="nav-link mobile-link block py-1.5 hover:text-red">Projects</a></li>
-                <li><a href="#playbooks" class="nav-link mobile-link block py-1.5 hover:text-red">Playbooks</a></li>
-                <li><a href="#evidence" class="nav-link mobile-link block py-1.5 hover:text-red">Evidence</a></li>
-                <li><a href="#certifications" class="nav-link mobile-link block py-1.5 hover:text-red">Certifications</a></li>
-                <li><a href="#community" class="nav-link mobile-link block py-1.5 hover:text-red">Leadership</a></li>
-                <li><a href="#contact" class="nav-link mobile-link block py-1.5 hover:text-red">Contact</a></li>
-                <li class="pt-3 border-t border-white/10">
-                    <a href="#contact" class="mobile-link inline-block rounded-full bg-red px-5 py-2.5 font-semibold text-white text-xs uppercase tracking-wider">Let's Talk</a>
-                </li>
-            </ul>
+        <div id="mobile-menu-drawer" class="mobile-nav-drawer hidden fixed inset-x-0 top-[58px] z-40 bg-black/95 backdrop-blur-2xl border-b border-white/10 px-6 py-6 transition-all duration-300 max-h-[85vh] overflow-y-auto">
+            <div class="flex flex-col gap-4 text-xs font-mono uppercase tracking-widest text-white/80">
+                <!-- Group: Profile & Leadership -->
+                <div>
+                    <span class="text-[10px] text-red font-bold tracking-widest block mb-2 opacity-80">// CORE PROFILE</span>
+                    <ul class="flex flex-col gap-2 list-none p-0 m-0 pl-2 border-l border-white/10">
+                        <li><a href="#about" class="nav-link mobile-link block py-1 hover:text-red">About</a></li>
+                        <li><a href="#community" class="nav-link mobile-link block py-1 hover:text-red">Leadership (Xenclavis)</a></li>
+                        <li><a href="#experience" class="nav-link mobile-link block py-1 hover:text-red">Experience</a></li>
+                        <li><a href="#arsenal" class="nav-link mobile-link block py-1 hover:text-red">Technical Arsenal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Group: Portfolio -->
+                <div>
+                    <span class="text-[10px] text-red font-bold tracking-widest block mb-2 opacity-80">// PORTFOLIO &amp; LABS</span>
+                    <ul class="flex flex-col gap-2 list-none p-0 m-0 pl-2 border-l border-white/10">
+                        <li><a href="#projects" class="nav-link mobile-link block py-1 hover:text-red">Case Studies</a></li>
+                        <li><a href="#detection-lab" class="nav-link mobile-link block py-1 hover:text-red">Detection Lab</a></li>
+                        <li><a href="#playbooks" class="nav-link mobile-link block py-1 hover:text-red">Incident Playbooks</a></li>
+                        <li><a href="#evidence" class="nav-link mobile-link block py-1 hover:text-red">Telemetry Evidence</a></li>
+                        <li><a href="#services" class="nav-link mobile-link block py-1 hover:text-red">Defensive Services</a></li>
+                    </ul>
+                </div>
+
+                <!-- Group: Credentials -->
+                <div>
+                    <span class="text-[10px] text-red font-bold tracking-widest block mb-2 opacity-80">// CREDENTIALS</span>
+                    <ul class="flex flex-col gap-2 list-none p-0 m-0 pl-2 border-l border-white/10">
+                        <li><a href="#certifications" class="nav-link mobile-link block py-1 hover:text-red">Certifications</a></li>
+                        <li><a href="#education" class="nav-link mobile-link block py-1 hover:text-red">Education</a></li>
+                    </ul>
+                </div>
+
+                <div class="pt-2 border-t border-white/10 flex items-center justify-between">
+                    <a href="#contact" class="nav-link mobile-link block py-1 hover:text-red font-bold">Contact</a>
+                    <a href="#contact" class="mobile-link inline-block rounded-full bg-red px-5 py-2 font-semibold text-white text-xs uppercase tracking-wider">Let's Talk</a>
+                </div>
+            </div>
         </div>
 
         <!-- Hero Section -->
@@ -78,7 +144,11 @@
             
             <div class="relative mx-auto grid w-full max-w-[1080px] items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
                 <div class="relative z-10 animate-fade-in-up">
-                    <p class="hero-kicker mb-5 text-sm font-bold uppercase tracking-[0.35em] text-red animate-fade-in">Hello! I'm</p>
+                    <div class="hero-terminal-badge animate-fade-in">
+                        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                        <span class="text-white/60 font-mono text-[11px]">operator@soc-node:~$</span>
+                        <span class="hero-typing-prompt">init --profile "Yuvaraj C" --status READY</span>
+                    </div>
                     <h1 class="split-heading font-bebas text-[clamp(3rem,6.8vw,7.2rem)] leading-[0.8] animate-fade-in-up">Yuvaraj.<span class="text-red">C</span></h1>
                     <p class="hero-copy mt-5 max-w-3xl font-clash text-[clamp(1.3rem,2.8vw,3rem)] leading-[0.95] text-white">SOC ANALYST <span class="text-red">|</span> BLUE TEAM <span class="text-red">|</span> SECURITY OPERATIONS</p>
                     <p class="hero-copy mt-6 max-w-2xl text-sm leading-7 text-white/68 md:text-base text-justify">Cybersecurity professional specializing in security monitoring, SIEM, threat detection, incident investigation, threat intelligence, and security automation. Hands-on experience with Wazuh, Splunk, Sysmon, Snort, TheHive, Wireshark and Python, with an offensive-security background that strengthens attacker-focused detection and investigation.</p>
@@ -136,6 +206,141 @@
                 <span class="font-bebas text-4xl md:text-6xl">Incident Response<!-- --> <b>•</b></span>
             </div>
         </div>
+
+        <!-- About Section -->
+        <section id="about" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
+            <div class="mx-auto grid max-w-[1180px] gap-12 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr]">
+                <div class="max-w-5xl reveal">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
+                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ IDENTITY DOSSIER ] // OPERATOR PROFILE</p>
+                    </div>
+                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">About</h2>
+                </div>
+                <div class="pt-6 reveal-right">
+                    <p class="font-clash text-[clamp(1.5rem,3.6vw,3.6rem)] leading-none text-white font-semibold">A technology defender with an offensive security mindset and a founder's bias for shipping.</p>
+                    <p class="mt-8 max-w-3xl text-lg leading-9 text-[#cccccc] text-justify font-sans">I'm a cybersecurity professional with a Master of Science in Cyber Security. I specialize in Security Operations Center (SOC) operations and web application penetration testing. I enjoy applying technical knowledge to solve real-world security challenges - whether that's triaging alerts in SIEM platforms, detecting indicators of compromise, script-automating threat intel lookups, or conducting penetration tests on web assets. I combine defensive depth with offensive tactics to build secure infrastructure.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community / Leadership Section -->
+        <section id="community" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
+            <div class="mx-auto grid max-w-[1180px] items-center gap-12 px-5 md:px-10 lg:grid-cols-[1fr_0.85fr]">
+                <div class="reveal-left">
+                    <div class="max-w-5xl">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
+                            <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ COMMAND NODE ] // LEADERSHIP INITIATIVE</p>
+                        </div>
+                        <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">Xenclavis</h2>
+                    </div>
+                    <p class="mt-8 max-w-3xl text-xl leading-9 text-[#cccccc] text-justify font-sans">
+                        Founder and CEO of Xenclavis, specializing in mentoring and delivering industry-aligned knowledge to prepare next-generation professionals in both defensive and offensive cybersecurity fields. Spearheading hands-on blue team curriculum, SIEM orchestration, and tactical threat hunting workshops.
+                    </p>
+                </div>
+                
+                <a href="https://www.linkedin.com/company/xenclavis/" target="_blank" rel="noreferrer" class="floating-card magnetic reveal-right border border-white/10 rounded-2xl">
+                    <span>LinkedIn</span>
+                    <strong>xenclavis</strong>
+                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
+            <div class="mx-auto max-w-[1180px] px-5 md:px-10">
+                <div class="max-w-5xl reveal">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
+                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ OPERATION LOGS ] // MISSION HISTORY</p>
+                    </div>
+                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">Experience</h2>
+                    <p class="mt-4 max-w-2xl text-base text-white/60">Chronological deployment records, defensive instructor operations, and frontline security assessments.</p>
+                </div>
+                <div class="mt-14 border-t border-white/10 reveal">
+                    <!-- Log 1: Xenclavis -->
+                    <article class="op-log-row experience-block">
+                        <div class="op-log-header">
+                            <span class="op-log-date font-mono">&gt; MAR 2025 &ndash; PRESENT</span>
+                            <h3 class="op-log-role">[ CYBERSECURITY INSTRUCTOR ]</h3>
+                            <p class="op-log-org">Xenclavis &middot; <span class="text-green-400 font-mono text-xs font-semibold">ACTIVE</span></p>
+                        </div>
+                        <div class="op-log-desc">
+                            <p class="text-[#cccccc] text-base leading-relaxed">Scenario-based cybersecurity training curricula development, mentoring SOC cohorts, designing custom SIEM detection labs, and running incident response attack simulations.</p>
+                            <div class="op-log-tags animated-list" data-delay="100">
+                                <span class="op-tag animated-item">SIEM LAB ARCHITECTURE</span>
+                                <span class="op-tag animated-item">SOC MENTORSHIP</span>
+                                <span class="op-tag animated-item">BLUE TEAM OPS</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Log 2: Elevate Labs -->
+                    <article class="op-log-row experience-block">
+                        <div class="op-log-header">
+                            <span class="op-log-date font-mono">&gt; JAN 2026 &ndash; APR 2026</span>
+                            <h3 class="op-log-role">[ CYBERSECURITY INTERN ]</h3>
+                            <p class="op-log-org">Elevate Labs &middot; <span class="text-white/40 font-mono text-xs font-semibold">COMPLETED</span></p>
+                        </div>
+                        <div class="op-log-desc">
+                            <p class="text-[#cccccc] text-base leading-relaxed">Conducted infrastructure vulnerability assessments, perimeter network security control audits, phishing investigations, and active firewall/VPN configuration monitoring.</p>
+                            <div class="op-log-tags animated-list" data-delay="100">
+                                <span class="op-tag animated-item">VULNERABILITY ASSESSMENT</span>
+                                <span class="op-tag animated-item">PHISHING TRIAGE</span>
+                                <span class="op-tag animated-item">FIREWALL AUDIT</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Log 3: Secuerium Technologies -->
+                    <article class="op-log-row experience-block">
+                        <div class="op-log-header">
+                            <span class="op-log-date font-mono">&gt; SEP 2025</span>
+                            <h3 class="op-log-role">[ WEB APPLICATION PENTESTING INTERN ]</h3>
+                            <p class="op-log-org">Secuerium Technologies &middot; <span class="text-white/40 font-mono text-xs font-semibold">COMPLETED</span></p>
+                        </div>
+                        <div class="op-log-desc">
+                            <p class="text-[#cccccc] text-base leading-relaxed">Executed rigorous black/gray-box penetration tests across client production targets, identifying and validating critical OWASP Top 10 vulnerabilities (SQLi, IDOR, XSS) and authoring executive remediation reports.</p>
+                            <div class="op-log-tags animated-list" data-delay="100">
+                                <span class="op-tag animated-item">BURP SUITE PRO</span>
+                                <span class="op-tag animated-item">OWASP TOP 10</span>
+                                <span class="op-tag animated-item">VAPT REPORTING</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Log 4: NullClass Edtech -->
+                    <article class="op-log-row experience-block">
+                        <div class="op-log-header">
+                            <span class="op-log-date font-mono">&gt; MAY 2025 &ndash; JUN 2025</span>
+                            <h3 class="op-log-role">[ SOC &amp; INCIDENT RESPONSE INTERN ]</h3>
+                            <p class="op-log-org">NullClass Edtech &middot; <span class="text-white/40 font-mono text-xs font-semibold">COMPLETED</span></p>
+                        </div>
+                        <div class="op-log-desc">
+                            <p class="text-[#cccccc] text-base leading-relaxed">Deployed Splunk and Wazuh monitoring agents, orchestrated real-time alert triage pipelines, simulated incident response playbooks, and performed IOC threat enrichment and documentation.</p>
+                            <div class="op-log-tags animated-list" data-delay="100">
+                                <span class="op-tag animated-item">SPLUNK ENTERPRISE</span>
+                                <span class="op-tag animated-item">WAZUH SIEM</span>
+                                <span class="op-tag animated-item">INCIDENT TRIAGE</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Counter Section -->
+        <section class="hyper-section section-pad bg-black text-white">
+            <div class="mx-auto grid max-w-[1180px] grid-cols-2 gap-5 px-5 sm:grid-cols-3 md:grid-cols-5 md:px-10">
+                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="10+">0</strong><span>Assessment Scans</span></div>
+                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="6+">0</strong><span>Internships Completed</span></div>
+                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="150+">0</strong><span>TryHackMe Labs</span></div>
+                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="4+">0</strong><span>Core Certifications</span></div>
+                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="2024">0</strong><span>Started Analysis</span></div>
+            </div>
+        </section>
 
         <!-- Technical Arsenal Section -->
         <section id="arsenal" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
@@ -408,49 +613,7 @@
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
-            <div class="mx-auto grid max-w-[1180px] gap-12 px-5 md:px-10 lg:grid-cols-[0.85fr_1.15fr]">
-                <div class="max-w-5xl reveal">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
-                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ IDENTITY DOSSIER ] // OPERATOR PROFILE</p>
-                    </div>
-                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">About</h2>
-                </div>
-                <div class="pt-6 reveal-right">
-                    <p class="font-clash text-[clamp(1.5rem,3.6vw,3.6rem)] leading-none text-white font-semibold">A technology defender with an offensive security mindset and a founder's bias for shipping.</p>
-                    <p class="mt-8 max-w-3xl text-lg leading-9 text-[#cccccc] text-justify font-sans">I'm a cybersecurity professional with a Master of Science in Cyber Security. I specialize in Security Operations Center (SOC) operations and web application penetration testing. I enjoy applying technical knowledge to solve real-world security challenges - whether that's triaging alerts in SIEM platforms, detecting indicators of compromise, script-automating threat intel lookups, or conducting penetration tests on web assets. I combine defensive depth with offensive tactics to build secure infrastructure.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Education Section -->
-        <section id="education" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
-            <div class="mx-auto max-w-[1080px] px-5 md:px-10">
-                <div class="mx-auto max-w-4xl text-center reveal">
-                    <div class="inline-flex items-center gap-2 mb-3">
-                        <span class="inline-block w-2 h-2 rounded-full bg-red animate-pulse"></span>
-                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ ACADEMIC RECORD ] // HIGHER EDUCATION</p>
-                    </div>
-                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">Education</h2>
-                </div>
-                <div class="mt-14 max-w-3xl mx-auto">
-                    <article class="timeline-card-dossier reveal delay-100">
-                        <span class="dossier-date font-mono">&gt; 2023 :: 2025</span>
-                        <h3 class="dossier-degree">[ MASTER OF SCIENCE IN CYBER SECURITY ]</h3>
-                        <p class="dossier-school font-sans">AJK College of Arts and Science, Coimbatore</p>
-                        <span class="dossier-gpa font-mono">ACADEMIC SCORE: 8.7 CGPA // HONORS</span>
-                    </article>
-                    <article class="timeline-card-dossier reveal delay-300">
-                        <span class="dossier-date font-mono">&gt; 2020 :: 2023</span>
-                        <h3 class="dossier-degree">[ BACHELOR OF SCIENCE IN COMPUTER SCIENCE ]</h3>
-                        <p class="dossier-school font-sans">Muthayammal College of Arts &amp; Science, Rasipuram</p>
-                        <span class="dossier-gpa font-mono">ACADEMIC SCORE: 8.0 CGPA // FIRST CLASS</span>
-                    </article>
-                </div>
-            </div>
-        </section>
 
         <!-- Services Section -->
         <section id="services" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
@@ -552,99 +715,6 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
-            <div class="mx-auto max-w-[1180px] px-5 md:px-10">
-                <div class="max-w-5xl reveal">
-                    <div class="flex items-center gap-3 mb-3">
-                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
-                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ OPERATION LOGS ] // MISSION HISTORY</p>
-                    </div>
-                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">Experience</h2>
-                    <p class="mt-4 max-w-2xl text-base text-white/60">Chronological deployment records, defensive instructor operations, and frontline security assessments.</p>
-                </div>
-                <div class="mt-14 border-t border-white/10 reveal">
-                    <!-- Log 1: Xenclavis -->
-                    <article class="op-log-row experience-block">
-                        <div class="op-log-header">
-                            <span class="op-log-date font-mono">&gt; MAR 2025 &ndash; PRESENT</span>
-                            <h3 class="op-log-role">[ CYBERSECURITY INSTRUCTOR ]</h3>
-                            <p class="op-log-org">Xenclavis &middot; <span class="text-green-400 font-mono text-xs font-semibold">ACTIVE</span></p>
-                        </div>
-                        <div class="op-log-desc">
-                            <p class="text-[#cccccc] text-base leading-relaxed">Scenario-based cybersecurity training curricula development, mentoring SOC cohorts, designing custom SIEM detection labs, and running incident response attack simulations.</p>
-                            <div class="op-log-tags animated-list" data-delay="100">
-                                <span class="op-tag animated-item">SIEM LAB ARCHITECTURE</span>
-                                <span class="op-tag animated-item">SOC MENTORSHIP</span>
-                                <span class="op-tag animated-item">BLUE TEAM OPS</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Log 2: Elevate Labs -->
-                    <article class="op-log-row experience-block">
-                        <div class="op-log-header">
-                            <span class="op-log-date font-mono">&gt; JAN 2026 &ndash; APR 2026</span>
-                            <h3 class="op-log-role">[ CYBERSECURITY INTERN ]</h3>
-                            <p class="op-log-org">Elevate Labs &middot; <span class="text-white/40 font-mono text-xs font-semibold">COMPLETED</span></p>
-                        </div>
-                        <div class="op-log-desc">
-                            <p class="text-[#cccccc] text-base leading-relaxed">Conducted infrastructure vulnerability assessments, perimeter network security control audits, phishing investigations, and active firewall/VPN configuration monitoring.</p>
-                            <div class="op-log-tags animated-list" data-delay="100">
-                                <span class="op-tag animated-item">VULNERABILITY ASSESSMENT</span>
-                                <span class="op-tag animated-item">PHISHING TRIAGE</span>
-                                <span class="op-tag animated-item">FIREWALL AUDIT</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Log 3: Secuerium Technologies -->
-                    <article class="op-log-row experience-block">
-                        <div class="op-log-header">
-                            <span class="op-log-date font-mono">&gt; SEP 2025</span>
-                            <h3 class="op-log-role">[ WEB APPLICATION PENTESTING INTERN ]</h3>
-                            <p class="op-log-org">Secuerium Technologies &middot; <span class="text-white/40 font-mono text-xs font-semibold">COMPLETED</span></p>
-                        </div>
-                        <div class="op-log-desc">
-                            <p class="text-[#cccccc] text-base leading-relaxed">Executed rigorous black/gray-box penetration tests across client production targets, identifying and validating critical OWASP Top 10 vulnerabilities (SQLi, IDOR, XSS) and authoring executive remediation reports.</p>
-                            <div class="op-log-tags animated-list" data-delay="100">
-                                <span class="op-tag animated-item">BURP SUITE PRO</span>
-                                <span class="op-tag animated-item">OWASP TOP 10</span>
-                                <span class="op-tag animated-item">VAPT REPORTING</span>
-                            </div>
-                        </div>
-                    </article>
-
-                    <!-- Log 4: NullClass Edtech -->
-                    <article class="op-log-row experience-block">
-                        <div class="op-log-header">
-                            <span class="op-log-date font-mono">&gt; MAY 2025 &ndash; JUN 2025</span>
-                            <h3 class="op-log-role">[ SOC &amp; INCIDENT RESPONSE INTERN ]</h3>
-                            <p class="op-log-org">NullClass Edtech &middot; <span class="text-white/40 font-mono text-xs font-semibold">COMPLETED</span></p>
-                        </div>
-                        <div class="op-log-desc">
-                            <p class="text-[#cccccc] text-base leading-relaxed">Deployed Splunk and Wazuh monitoring agents, orchestrated real-time alert triage pipelines, simulated incident response playbooks, and performed IOC threat enrichment and documentation.</p>
-                            <div class="op-log-tags animated-list" data-delay="100">
-                                <span class="op-tag animated-item">SPLUNK ENTERPRISE</span>
-                                <span class="op-tag animated-item">WAZUH SIEM</span>
-                                <span class="op-tag animated-item">INCIDENT TRIAGE</span>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Counter Section -->
-        <section class="hyper-section section-pad bg-black text-white">
-            <div class="mx-auto grid max-w-[1180px] grid-cols-2 gap-5 px-5 sm:grid-cols-3 md:grid-cols-5 md:px-10">
-                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="10+">0</strong><span>Assessment Scans</span></div>
-                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="6+">0</strong><span>Internships Completed</span></div>
-                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="150+">0</strong><span>TryHackMe Labs</span></div>
-                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="4+">0</strong><span>Core Certifications</span></div>
-                <div class="counter-card last:col-span-2 sm:last:col-span-1"><strong class="counter font-bebas" data-value="2024">0</strong><span>Started Analysis</span></div>
-            </div>
-        </section>
 
         <!-- Case Studies (Projects) Section -->
         <section id="projects" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
@@ -1714,29 +1784,6 @@
             </div>
         </section>
 
-        <!-- Community / Leadership Section -->
-        <section id="community" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
-            <div class="mx-auto grid max-w-[1180px] items-center gap-12 px-5 md:px-10 lg:grid-cols-[1fr_0.85fr]">
-                <div class="reveal-left">
-                    <div class="max-w-5xl">
-                        <div class="flex items-center gap-3 mb-3">
-                            <span class="inline-block w-2.5 h-2.5 rounded-full bg-red animate-pulse"></span>
-                            <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ COMMAND NODE ] // LEADERSHIP INITIATIVE</p>
-                        </div>
-                        <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">Xenclavis</h2>
-                    </div>
-                    <p class="mt-8 max-w-3xl text-xl leading-9 text-[#cccccc] text-justify font-sans">
-                        Founder and CEO of Xenclavis, specializing in mentoring and delivering industry-aligned knowledge to prepare next-generation professionals in both defensive and offensive cybersecurity fields. Spearheading hands-on blue team curriculum, SIEM orchestration, and tactical threat hunting workshops.
-                    </p>
-                </div>
-                
-                <a href="https://www.linkedin.com/company/xenclavis/" target="_blank" rel="noreferrer" class="floating-card magnetic reveal-right border border-white/10 rounded-2xl">
-                    <span>LinkedIn</span>
-                    <strong>xenclavis</strong>
-                    <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-                </a>
-            </div>
-        </section>
 
         <!-- Certifications Section -->
         <section id="certifications" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
@@ -1803,6 +1850,33 @@
                     </div>
                 </div>
                 <a class="magnetic btn btn-red mt-10 inline-flex items-center gap-2 font-mono text-xs font-bold" href="https://tryhackme.com/p/YUVARAJC" target="_blank">Verify on TryHackMe <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg></a>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="hyper-section section-pad bg-black text-white relative border-b border-white/10">
+            <div class="mx-auto max-w-[1080px] px-5 md:px-10">
+                <div class="mx-auto max-w-4xl text-center reveal">
+                    <div class="inline-flex items-center gap-2 mb-3">
+                        <span class="inline-block w-2 h-2 rounded-full bg-red animate-pulse"></span>
+                        <p class="text-xs font-mono font-bold uppercase tracking-[0.35em] text-red typing-header">[ ACADEMIC RECORD ] // HIGHER EDUCATION</p>
+                    </div>
+                    <h2 class="split-heading font-bebas text-[clamp(2.8rem,7vw,7rem)] leading-[0.82] tracking-normal uppercase text-white">Education</h2>
+                </div>
+                <div class="mt-14 max-w-3xl mx-auto">
+                    <article class="timeline-card-dossier reveal delay-100">
+                        <span class="dossier-date font-mono">&gt; 2023 :: 2025</span>
+                        <h3 class="dossier-degree">[ MASTER OF SCIENCE IN CYBER SECURITY ]</h3>
+                        <p class="dossier-school font-sans">AJK College of Arts and Science, Coimbatore</p>
+                        <span class="dossier-gpa font-mono">ACADEMIC SCORE: 8.7 CGPA // HONORS</span>
+                    </article>
+                    <article class="timeline-card-dossier reveal delay-300">
+                        <span class="dossier-date font-mono">&gt; 2020 :: 2023</span>
+                        <h3 class="dossier-degree">[ BACHELOR OF SCIENCE IN COMPUTER SCIENCE ]</h3>
+                        <p class="dossier-school font-sans">Muthayammal College of Arts &amp; Science, Rasipuram</p>
+                        <span class="dossier-gpa font-mono">ACADEMIC SCORE: 8.0 CGPA // FIRST CLASS</span>
+                    </article>
+                </div>
             </div>
         </section>
 

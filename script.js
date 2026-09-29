@@ -6,19 +6,27 @@ if (follower) {
     });
 }
 
-// Navigation Link Highlighting on Scroll
+// Navigation Link Highlighting on Scroll & Dropdown Parent State
 const sections = document.querySelectorAll('section[id]');
+const portfolioSectionIds = ['projects', 'detection-lab', 'playbooks', 'evidence', 'services'];
+const credentialsSectionIds = ['certifications', 'education'];
+
 window.addEventListener('scroll', () => {
     try {
         let scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        let activePortfolio = false;
+        let activeCredentials = false;
+
         sections.forEach(current => {
             const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 150;
+            const sectionTop = current.offsetTop - 160;
             const sectionId = current.getAttribute('id');
             if (sectionId) {
-                const link = document.querySelector(`.nav-link[href*="${sectionId}"]`);
+                const link = document.querySelector(`.nav-links-container > li > .nav-link[href*="${sectionId}"]`);
+                const isInView = scrollY > sectionTop && scrollY <= sectionTop + sectionHeight;
+                
                 if (link) {
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    if (isInView) {
                         link.classList.add('text-red');
                         link.classList.remove('text-white/80');
                     } else {
@@ -26,11 +34,57 @@ window.addEventListener('scroll', () => {
                         link.classList.add('text-white/80');
                     }
                 }
+
+                if (isInView) {
+                    if (portfolioSectionIds.includes(sectionId)) activePortfolio = true;
+                    if (credentialsSectionIds.includes(sectionId)) activeCredentials = true;
+                }
+            }
+        });
+
+        // Highlight dropdown trigger parents when their child sections are in view
+        document.querySelectorAll('.nav-dropdown-item').forEach(item => {
+            const btn = item.querySelector('.nav-dropdown-btn');
+            const hasPortfolio = item.querySelector('a[href="#projects"]');
+            const hasCredentials = item.querySelector('a[href="#certifications"]');
+            if (btn) {
+                if (hasPortfolio && activePortfolio) {
+                    btn.classList.add('text-red');
+                    btn.classList.remove('text-white/80');
+                } else if (hasCredentials && activeCredentials) {
+                    btn.classList.add('text-red');
+                    btn.classList.remove('text-white/80');
+                } else {
+                    btn.classList.remove('text-red');
+                    btn.classList.add('text-white/80');
+                }
             }
         });
     } catch (e) {
         console.error("Highlight scroll error caught:", e);
     }
+});
+
+// Dropdown click/touch toggle for mobile/tablet & focus handling
+document.querySelectorAll('.nav-dropdown-item').forEach(dropdown => {
+    const btn = dropdown.querySelector('.nav-dropdown-btn');
+    if (btn) {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = dropdown.classList.contains('dropdown-open');
+            document.querySelectorAll('.nav-dropdown-item').forEach(d => d.classList.remove('dropdown-open'));
+            if (!isOpen) dropdown.classList.add('dropdown-open');
+        });
+    }
+    dropdown.querySelectorAll('.dropdown-link').forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('dropdown-open');
+        });
+    });
+});
+
+document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown-item').forEach(d => d.classList.remove('dropdown-open'));
 });
 
 // Interactive Console Module Selection

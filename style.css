@@ -2497,3 +2497,9 @@ body {
 .text-white\/50 {
     color: rgba(255, 255, 255, 0.70) !important; /* > 7.5:1 contrast against black */
 }
+
+/* Rough Notation / Magic UI Highlighter Enhancements */
+.rough-annotation {
+    z-index: 0;
+    pointer-events: none;
+}

@@ -1,3 +1,5 @@
+import { annotate, annotationGroup } from 'rough-notation';
+
 // Cursor Follower
 const follower = document.querySelector('.cursor-follower');
 if (follower) {
@@ -644,3 +646,74 @@ if (mobileMenuToggle && mobileMenuDrawer) {
         });
     });
 }
+
+// Magic UI / Rough Notation Highlighter Engine for About Section
+function initAboutHighlighter() {
+    const aboutSection = document.getElementById('about');
+    const socEl = document.getElementById('hl-soc');
+    const pentestEl = document.getElementById('hl-pentest');
+    const siemEl = document.getElementById('hl-siem');
+    const iocEl = document.getElementById('hl-ioc');
+
+    if (!aboutSection || !socEl || !pentestEl) return;
+
+    // Tactical red palette: Semi-transparent glowing red highlight & crisp neon-red underline
+    const a1 = annotate(socEl, {
+        type: 'highlight',
+        color: 'rgba(220, 38, 38, 0.28)',
+        multiline: true,
+        animationDuration: 600
+    });
+
+    const a2 = annotate(pentestEl, {
+        type: 'highlight',
+        color: 'rgba(220, 38, 38, 0.28)',
+        multiline: true,
+        animationDuration: 650
+    });
+
+    const a3 = siemEl ? annotate(siemEl, {
+        type: 'underline',
+        color: '#ff5252',
+        strokeWidth: 2.2,
+        padding: 2,
+        multiline: true,
+        animationDuration: 450
+    }) : null;
+
+    const a4 = iocEl ? annotate(iocEl, {
+        type: 'underline',
+        color: '#ff5252',
+        strokeWidth: 2.2,
+        padding: 2,
+        multiline: true,
+        animationDuration: 450
+    }) : null;
+
+    const group = annotationGroup([a1, a2, a3, a4].filter(Boolean));
+
+    let hasTriggered = false;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !hasTriggered) {
+                hasTriggered = true;
+                // Slight delay for smooth aesthetic entrance after scroll reveal
+                setTimeout(() => {
+                    group.show();
+                }, 150);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.25
+    });
+
+    observer.observe(aboutSection);
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initAboutHighlighter);
+} else {
+    initAboutHighlighter();
+}
+

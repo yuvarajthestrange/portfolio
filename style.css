@@ -1340,22 +1340,48 @@ body {
   animation: spinCounterClockwise 30s linear infinite;
 }
 
-.cursor-follower {
-  width: 20px;
-  height: 20px;
-  background-color: rgba(255, 30, 30, 0.15);
-  border: 1px solid #ff1e1e;
-  border-radius: 50%;
+/* Magic UI Smooth Cursor (Mounted at Root Level) */
+.smooth-cursor-container {
   position: fixed;
-  pointer-events: none;
-  z-index: 9999;
-  left: 0;
   top: 0;
-  transition: transform 0.08s cubic-bezier(0.23, 1, 0.32, 1);
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  will-change: transform;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  transform-origin: center center;
 }
-@media (max-width: 768px) {
-  .cursor-follower { display: none; }
+
+.smooth-cursor-svg {
+  display: block;
+  width: 28px;
+  height: 30px;
+  transform-origin: center center;
+  transition: filter 0.25s ease;
 }
+
+.smooth-cursor-container.cursor-hover-active .smooth-cursor-svg {
+  filter: drop-shadow(0 0 10px rgba(220, 38, 38, 0.95)) drop-shadow(0 0 20px rgba(220, 38, 38, 0.45));
+}
+
+/* Hide default cursor on desktop when fine pointer is active */
+@media (any-hover: hover) and (any-pointer: fine) {
+  body, a, button, [role="button"], select, .device-module-btn, .tab-btn {
+    cursor: none !important;
+  }
+  input, textarea {
+    cursor: text !important;
+  }
+}
+
+/* Hide custom cursor on touch/mobile devices */
+@media (hover: none) or (pointer: coarse), (max-width: 768px) {
+  .smooth-cursor-container {
+    display: none !important;
+  }
+}
+
 
 /* Console meters */
 .console-card:hover .console-meter span {

@@ -1,12 +1,184 @@
 import { annotate, annotationGroup } from 'rough-notation';
 
-// Cursor Follower
-const follower = document.querySelector('.cursor-follower');
-if (follower) {
-    document.addEventListener('mousemove', (e) => {
-        follower.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
+// Magic UI Smooth Cursor (Physics-Based Directional Motion Engine)
+function initSmoothCursor() {
+    const cursorEl = document.getElementById('smooth-cursor');
+    if (!cursorEl) return;
+
+    // Check for desktop fine pointer
+    const mediaQuery = window.matchMedia('(any-hover: hover) and (any-pointer: fine)');
+    if (!mediaQuery.matches) {
+        cursorEl.style.display = 'none';
+        return;
+    }
+
+    // State variables
+    let targetX = -100, targetY = -100;
+    let posX = -100, posY = -100;
+    let velX = 0, velY = 0;
+
+    let targetRotation = 0;
+    let currentRotation = 0;
+    let rotVel = 0;
+
+    let targetScale = 1;
+    let currentScale = 1;
+    let scaleVel = 0;
+
+    let isVisible = false;
+    let lastTime = performance.now();
+
+    // Mouse velocity calculation for directional rotation
+    let lastMousePos = { x: 0, y: 0 };
+    let mouseVelocity = { x: 0, y: 0 };
+    let lastUpdateTime = performance.now();
+    let previousAngle = 0;
+    let accumulatedRotation = 0;
+    let squishTimeout = null;
+
+    // Spring configs matching Magic UI
+    // Position: damping 45, stiffness 400, mass 1
+    const posStiffness = 380;
+    const posDamping = 38;
+    const posMass = 1;
+
+    // Rotation: damping 50, stiffness 280
+    const rotStiffness = 260;
+    const rotDamping = 34;
+
+    // Scale: damping 35, stiffness 500
+    const scaleStiffness = 450;
+    const scaleDamping = 32;
+
+    const onPointerMove = (e) => {
+        if (e.pointerType === 'touch') return;
+
+        if (!isVisible) {
+            isVisible = true;
+            cursorEl.style.opacity = '1';
+            // Snap position on first appearance to prevent flying from corner
+            posX = e.clientX;
+            posY = e.clientY;
+            targetX = e.clientX;
+            targetY = e.clientY;
+        }
+
+        targetX = e.clientX;
+        targetY = e.clientY;
+
+        const now = performance.now();
+        const deltaTime = now - lastUpdateTime;
+        if (deltaTime > 0) {
+            mouseVelocity.x = (e.clientX - lastMousePos.x) / deltaTime;
+            mouseVelocity.y = (e.clientY - lastMousePos.y) / deltaTime;
+        }
+        lastUpdateTime = now;
+        lastMousePos.x = e.clientX;
+        lastMousePos.y = e.clientY;
+
+        const speed = Math.sqrt(mouseVelocity.x * mouseVelocity.x + mouseVelocity.y * mouseVelocity.y);
+
+        if (speed > 0.08) {
+            const currentAngle = Math.atan2(mouseVelocity.y, mouseVelocity.x) * (180 / Math.PI) + 90;
+            let angleDiff = currentAngle - previousAngle;
+            if (angleDiff > 180) angleDiff -= 360;
+            if (angleDiff < -180) angleDiff += 360;
+            accumulatedRotation += angleDiff;
+            targetRotation = accumulatedRotation;
+            previousAngle = currentAngle;
+
+            targetScale = 0.94;
+            if (squishTimeout) clearTimeout(squishTimeout);
+            squishTimeout = setTimeout(() => {
+                targetScale = 1;
+            }, 140);
+        }
+    };
+
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+        cursorEl.style.opacity = '0';
+        isVisible = false;
     });
+
+    document.addEventListener('mouseenter', () => {
+        if (isVisible) cursorEl.style.opacity = '1';
+    });
+
+    // Interactive element hover detection (scale up & tactical glow)
+    document.addEventListener('mouseover', (e) => {
+        const interactive = e.target.closest('a, button, input, textarea, select, .device-module-btn, .tab-btn, .pill, [role="button"]');
+        if (interactive) {
+            targetScale = 1.25;
+            cursorEl.classList.add('cursor-hover-active');
+        }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+        const interactive = e.target.closest('a, button, input, textarea, select, .device-module-btn, .tab-btn, .pill, [role="button"]');
+        if (interactive) {
+            targetScale = 1;
+            cursorEl.classList.remove('cursor-hover-active');
+        }
+    });
+
+    // Click feedback
+    document.addEventListener('mousedown', () => {
+        targetScale = 0.82;
+    });
+
+    document.addEventListener('mouseup', (e) => {
+        const interactive = e.target.closest('a, button, input, textarea, select, .device-module-btn, .tab-btn, .pill, [role="button"]');
+        targetScale = interactive ? 1.25 : 1;
+    });
+
+    // Physics Animation Loop (Runs via RAF at 60/120/144Hz)
+    function render(currentTime) {
+        const dt = Math.min((currentTime - lastTime) / 1000, 0.04);
+        lastTime = currentTime;
+
+        if (isVisible) {
+            const steps = 2;
+            const subDt = dt / steps;
+            for (let i = 0; i < steps; i++) {
+                // 1. Spring physics for Position X
+                const forceX = -posStiffness * (posX - targetX) - posDamping * velX;
+                velX += (forceX / posMass) * subDt;
+                posX += velX * subDt;
+
+                // 2. Spring physics for Position Y
+                const forceY = -posStiffness * (posY - targetY) - posDamping * velY;
+                velY += (forceY / posMass) * subDt;
+                posY += velY * subDt;
+
+                // 3. Spring physics for Rotation
+                const forceRot = -rotStiffness * (currentRotation - targetRotation) - rotDamping * rotVel;
+                rotVel += forceRot * subDt;
+                currentRotation += rotVel * subDt;
+
+                // 4. Spring physics for Scale
+                const forceScale = -scaleStiffness * (currentScale - targetScale) - scaleDamping * scaleVel;
+                scaleVel += forceScale * subDt;
+                currentScale += scaleVel * subDt;
+            }
+
+            // Apply hardware-accelerated transform centered at pointer
+            cursorEl.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%) rotate(${currentRotation}deg) scale(${currentScale})`;
+        }
+
+        requestAnimationFrame(render);
+    }
+
+    requestAnimationFrame(render);
 }
+
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", initSmoothCursor);
+} else {
+    initSmoothCursor();
+}
+
 
 // Navigation Link Highlighting on Scroll & Dropdown Parent State
 const sections = document.querySelectorAll('section[id]');

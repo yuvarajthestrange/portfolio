@@ -652,60 +652,46 @@ function initAboutHighlighter() {
     const aboutSection = document.getElementById('about');
     const socEl = document.getElementById('hl-soc');
     const pentestEl = document.getElementById('hl-pentest');
-    const siemEl = document.getElementById('hl-siem');
-    const iocEl = document.getElementById('hl-ioc');
 
     if (!aboutSection || !socEl || !pentestEl) return;
 
-    // Tactical red palette: Semi-transparent glowing red highlight & crisp neon-red underline
+    // Exact palette & effects requested:
+    // 1. Highlight: #FF9800 with dark/black text for high contrast on orange
+    // 2. Underline: #87CEFA (light sky blue) with white/bright text
     const a1 = annotate(socEl, {
         type: 'highlight',
-        color: 'rgba(220, 38, 38, 0.28)',
-        multiline: true,
-        animationDuration: 600
-    });
-
-    const a2 = annotate(pentestEl, {
-        type: 'highlight',
-        color: 'rgba(220, 38, 38, 0.28)',
+        color: '#FF9800',
         multiline: true,
         animationDuration: 650
     });
 
-    const a3 = siemEl ? annotate(siemEl, {
+    const a2 = annotate(pentestEl, {
         type: 'underline',
-        color: '#ff5252',
-        strokeWidth: 2.2,
+        color: '#87CEFA',
+        strokeWidth: 2.5,
         padding: 2,
         multiline: true,
-        animationDuration: 450
-    }) : null;
+        animationDuration: 600
+    });
 
-    const a4 = iocEl ? annotate(iocEl, {
-        type: 'underline',
-        color: '#ff5252',
-        strokeWidth: 2.2,
-        padding: 2,
-        multiline: true,
-        animationDuration: 450
-    }) : null;
-
-    const group = annotationGroup([a1, a2, a3, a4].filter(Boolean));
+    const group = annotationGroup([a1, a2]);
 
     let hasTriggered = false;
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !hasTriggered) {
                 hasTriggered = true;
-                // Slight delay for smooth aesthetic entrance after scroll reveal
+                // Transition text to bold black right as vibrant orange highlight begins
                 setTimeout(() => {
+                    socEl.classList.remove('text-white');
+                    socEl.classList.add('text-black');
                     group.show();
-                }, 150);
+                }, 120);
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.25
+        threshold: 0.2
     });
 
     observer.observe(aboutSection);
